@@ -54,6 +54,7 @@
     "adNicIPAddress": "10.0.0.4",
     "adVMName": "ADDSVM",
     "adSubnetName": "ADDSSubnet",
+    "adVMNSGName": "ADDSVMNSG",
     "adSubnetAddressPrefix": "10.0.0.0/24",
     "publicIPAddressName": "ADDSPublicIP"
     
@@ -125,6 +126,9 @@
             "properties": {
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[variables('adNicIPAddress')]",
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]"
+              },
               "subnet": {
                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('adSubnetName'))]"
               }
@@ -132,6 +136,45 @@
           }  
         ]
       } 
+    },
+        {
+     "apiVersion": "2016-03-30",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[variables('adVMNSGName')]",
+      "location": "[resourceGroup().location]",
+      "properties": { 
+        "securityRules": [
+          {
+            "name": "HTTPRule",
+            "properties": {
+              "description": "This NSG Rule allows incoming traffic to port 443 (HTTPS)",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "443",
+              "sourceAddressPrefix": "INTERNET",
+              "destinationAddressPrefix": "10.0.0.0/24",
+              "access": "Allow",
+              "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+      {
+       "name": "RDPRule",
+            "properties": {
+              "description": "This NSG Rule allows incoming traffic to port 3389 (RDP)",
+              "protocol": "Tcp",
+              "sourcePortRange": "*",
+              "destinationPortRange": "3389",
+              "sourceAddressPrefix": "INTERNET",
+              "destinationAddressPrefix": "10.0.0.0/24",
+              "access": "Allow",
+              "priority": 200,
+              "direction": "Inbound"
+            }
+      }
+       
+     ]
+    }
     },
      {
       "type": "Microsoft.Compute/virtualMachines",
