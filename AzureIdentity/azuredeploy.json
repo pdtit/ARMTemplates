@@ -35,7 +35,7 @@
       "metadata": {
         "description": "The location of resources, such as templates and DSC modules, that the template depends on"
       },
-      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplates/AzureIdentity"
+      "defaultValue": "https://raw.githubusercontent.com/pdtit/master/ARMTemplates/AzureIdentity"
     },
     "_artifactsLocationSasToken": {
       "type": "securestring",
