@@ -25,7 +25,7 @@
     },
     "dnsPrefix": {
       "type": "string",
-      "defaultValue": "OPSLabVM",
+      "defaultValue": "opslabvm",
       "metadata": {
         "description": "The DNS prefix for the public IP address used by the VM"
       }
