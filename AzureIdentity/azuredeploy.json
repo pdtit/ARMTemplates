@@ -35,7 +35,7 @@
       "metadata": {
         "description": "The location of resources, such as templates and DSC modules, that the template depends on"
       },
-      "defaultValue": "https://raw.githubusercontent.com/pdtit/master/ARMTemplates/AzureIdentity"
+      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzureIdentity"
     },
     "_artifactsLocationSasToken": {
       "type": "securestring",
@@ -187,10 +187,11 @@
             }
           ]
         }
-      },
-      "resources": [
-        {
-          "type": "extensions",
+      }
+    }, 
+    {      
+     
+          "type": "Microsoft.Compute/virtualMachines/extensions",
           "name": "CreateADForest",
           "apiVersion": "2015-06-15",
           "location": "[resourceGroup().location]",
@@ -219,9 +220,9 @@
               }
             }
           }
-        }
-      ]
+       
     },
+    
     {
       "type": "Microsoft.Resources/deployments",
       "name": "UpdateVNetDNS",
