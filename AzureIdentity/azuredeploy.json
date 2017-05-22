@@ -25,9 +25,9 @@
     },
     "dnsPrefix": {
       "type": "string",
-      "defaultValue": "OPSLabVMLB",
+      "defaultValue": "OPSLabVM",
       "metadata": {
-        "description": "The DNS prefix for the public IP address used by the Load Balancer"
+        "description": "The DNS prefix for the public IP address used by the VM"
       }
     },
     "_artifactsLocation": {
@@ -55,9 +55,8 @@
     "adVMName": "ADDSVM",
     "adSubnetName": "ADDSSubnet",
     "adSubnetAddressPrefix": "10.0.0.0/24",
-    "publicIPAddressName": "ADDSPublicIP",
-    "adAvailabilitySetName": "ADDSAvailabiltySet",
-    "adLBName": "ADDSLoadBalancer"
+    "publicIPAddressName": "ADDSPublicIP"
+    
   },
   "resources": [
     {
@@ -116,8 +115,8 @@
       "apiVersion": "2016-03-30",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "Microsoft.Resources/deployments/VNet",
-        "[resourceId('Microsoft.Network/loadBalancers', variables('adLBName'))]"
+        "Microsoft.Resources/deployments/VNet"
+        
       ],
       "properties": {
         "ipConfigurations": [
