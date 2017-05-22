@@ -133,7 +133,7 @@
         ]
       } 
     },
-    {
+     {
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[variables('adVMName')]",
       "apiVersion": "2015-06-15",
@@ -141,12 +141,13 @@
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Network/networkInterfaces', variables('adNicName'))]"
-        
+     
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_DS1_v2"
+          "vmSize": "Standard_D2_v2"
         },
+        
         "osProfile": {
           "computerName": "[variables('adVMName')]",
           "adminUsername": "[parameters('adminUsername')]",
@@ -187,11 +188,10 @@
             }
           ]
         }
-      }
-    }, 
-    {      
-     
-          "type": "Microsoft.Compute/virtualMachines/extensions",
+      },
+      "resources": [
+        {
+          "type": "extensions",
           "name": "CreateADForest",
           "apiVersion": "2015-06-15",
           "location": "[resourceGroup().location]",
@@ -220,7 +220,8 @@
               }
             }
           }
-       
+        }
+      ]
     },
     
     {
