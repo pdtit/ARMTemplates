@@ -97,7 +97,7 @@
     "scriptFolder": ".",
     "VM1scriptFileName": "deploy-ad.ps1",
     "VM1scriptParameters": "[concat(' -domain ', parameters('domainName'), ' -password ', parameters('adminPassword'))]",
-    "VM2scriptFileName": "deploy-iis.ps1",
+    "VM2scriptFileName": "deploy-iis-full.ps1",
     "iisipName": "iisip",
     "adipName": "adip"
   },  
