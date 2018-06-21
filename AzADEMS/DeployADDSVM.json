@@ -40,14 +40,14 @@
       "metadata": {
         "description": "script to execute"
       },
-      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplatesAzAD+EMS/master/vmextensions/deploy-ad.ps1"
+      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplatesAzADEMS/master/vmextensions/deploy-ad.ps1"
     },
     "VM2scriptUrl": {
       "type": "string",
       "metadata": {
         "description": "script to execute"
       },
-      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplatesAzAD+EMS/master/vmextensions/install-iis.ps1"
+      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplatesAzADEMS/master/vmextensions/deploy-iis-full.ps1"
     },
     "ADVMWindowsOSVersion": {
       "type": "string",
