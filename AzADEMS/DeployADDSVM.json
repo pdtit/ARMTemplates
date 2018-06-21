@@ -324,32 +324,7 @@
         },
         "resources": [
           {
-            "name": "IISInstall",
-            "type": "extensions",
-            "location": "[resourceGroup().location]",
-            "apiVersion": "2016-03-30",
-            "dependsOn": [
-              "[resourceId('Microsoft.Compute/virtualMachines', parameters('IISVMName'))]"
-            ],
-            "tags": {
-              "displayName": "IISInstall"
-            },
-            "properties": {
-              "publisher": "Microsoft.Compute",
-              "type": "CustomScriptExtension",
-              "typeHandlerVersion": "1.4",
-              "autoUpgradeMinorVersion": true,
-              "settings": {
-                "fileUris": [
-                  "[concat(parameters('VM2scriptUrl'))]"
-                ],
-                "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('scriptFolder'), '/', variables('VM2scriptFileName'))]"
-              }
-            }
-          }
-        ]
-      },
-      {
+            
         "name": "[variables('iisipName')]",
         "type": "Microsoft.Network/publicIPAddresses",
         "location": "[resourceGroup().location]",
