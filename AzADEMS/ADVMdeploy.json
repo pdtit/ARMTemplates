@@ -11,7 +11,7 @@
     },
     "ADVMName": {
       "type": "string",
-      "defaultValue": "ADVM",
+      "defaultValue": "ADDSVM",
       "minLength": 1
     },
     "adminUsername": {
@@ -30,7 +30,7 @@
     },
     "domainName": {
       "type": "string",
-      "defaultValue": "opsaaddemo.local",
+      "defaultValue": "azaddemo.local",
       "metadata": {
         "description": "The FQDN of the Active Directory Domain to be created"
       }
@@ -40,94 +40,68 @@
       "metadata": {
         "description": "script to execute"
       },
-      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplatesAzAD+EMS/master/vmextensions/deploy-ad.ps1"
+      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzADEMS/vmextensions/deploy-ad.ps1"
     },
-    "VM2scriptUrl": {
-      "type": "string",
-      "metadata": {
-        "description": "script to execute"
-      },
-      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplatesAzAD+EMS/master/vmextensions/install-iis.ps1"
-    },
-    "ADVMWindowsOSVersion": {
+      "ADVMWindowsOSVersion": {
       "type": "string",
       "defaultValue": "2016-Datacenter",
       "allowedValues": [
        "2016-Datacenter"
       ]
-    },
-    "IISVMName": {
-      "type": "string",
-      "defaultValue": "IISVM",
-      "minLength": 1
-    },
-    "IISVMWindowsOSVersion": {
-      "type": "string",
-      "defaultValue": "2016-Datacenter",
-      "allowedValues": [
-        "2016-Datacenter"
-      ]
     }
+    
+    
   },
+
   "variables": {
-    "PDTITTrainingVNETPrefix": "10.0.0.0/16",
-    "PDTITTrainingVNETSubnet1Name": "Apps",
-    "PDTITTrainingVNETSubnet1Prefix": "10.0.0.0/24",
-    "PDTITTrainingVNETSubnet2Name": "Identity",
-    "PDTITTrainingVNETSubnet2Prefix": "10.0.1.0/24",
+    "TrainingVNETPrefix": "10.0.0.0/16",
+    "TrainingVNETSubnet1Name": "Apps",
+    "TrainingVNETSubnet1Prefix": "10.0.0.0/24",
+    "TrainingVNETSubnet2Name": "Identity",
+    "TrainingVNETSubnet2Prefix": "10.0.1.0/24",
     "vmstorageName": "[concat('vmstorage', uniqueString(resourceGroup().id))]",
     "ADVMImagePublisher": "MicrosoftWindowsServer",
     "ADVMImageOffer": "WindowsServer",
     "ADVMOSDiskName": "ADVMOSDisk",
     "ADVMVmSize": "Standard_DS2_v2",
-    "ADVMVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'PDTITTrainingVNET')]",
-    "ADVMSubnetRef": "[concat(variables('ADVMVnetID'), '/subnets/', variables('PDTITTrainingVNETSubnet2Name'))]",
+    "ADVMVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'TrainingVNET')]",
+    "ADVMSubnetRef": "[concat(variables('ADVMVnetID'), '/subnets/', variables('TrainingVNETSubnet2Name'))]",
     "ADVMStorageAccountContainerName": "vhds",
     "ADVMNicName": "[concat(parameters('ADVMName'), 'NetworkInterface')]",
     "InstallADScriptFolder": "CustomScripts",
     "InstallADScriptFileName": "InstallAD.ps1",
-    "IISVMImagePublisher": "MicrosoftWindowsServer",
-    "IISVMImageOffer": "WindowsServer",
-    "IISVMOSDiskName": "IISVMOSDisk",
-    "IISVMVmSize": "Standard_DS2_v2",
-    "IISVMVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'PDTITTrainingVNET')]",
-    "IISVMSubnetRef": "[concat(variables('IISVMVnetID'), '/subnets/', variables('PDTITTrainingVNETSubnet1Name'))]",
-    "IISVMStorageAccountContainerName": "vhds",
-    "IISVMNicName": "[concat(parameters('IISVMName'), 'NetworkInterface')]",
     "scriptFolder": ".",
     "VM1scriptFileName": "deploy-ad.ps1",
     "VM1scriptParameters": "[concat(' -domain ', parameters('domainName'), ' -password ', parameters('adminPassword'))]",
-    "VM2scriptFileName": "deploy-iis.ps1",
-    "iisipName": "iisip",
     "adipName": "adip"
   },  
     "resources": [
       {
-        "name": "PDTITTrainingVNET",
+        "name": "TrainingVNET",
         "type": "Microsoft.Network/virtualNetworks",
         "location": "[resourceGroup().location]",
         "apiVersion": "2016-03-30",
         "dependsOn": [],
         "tags": {
-          "displayName": "PDTITTrainingVNET"
+          "displayName": "TrainingVNET"
         },
         "properties": {
           "addressSpace": {
             "addressPrefixes": [
-              "[variables('PDTITTrainingVNETPrefix')]"
+              "[variables('TrainingVNETPrefix')]"
             ]
           },
           "subnets": [
             {
-              "name": "[variables('PDTITTrainingVNETSubnet1Name')]",
+              "name": "[variables('TrainingVNETSubnet1Name')]",
               "properties": {
-                "addressPrefix": "[variables('PDTITTrainingVNETSubnet1Prefix')]"
+                "addressPrefix": "[variables('TrainingVNETSubnet1Prefix')]"
               }
             },
             {
-              "name": "[variables('PDTITTrainingVNETSubnet2Name')]",
+              "name": "[variables('TrainingVNETSubnet2Name')]",
               "properties": {
-                "addressPrefix": "[variables('PDTITTrainingVNETSubnet2Prefix')]"
+                "addressPrefix": "[variables('TrainingVNETSubnet2Prefix')]"
               }
             }
           ]
@@ -153,7 +127,7 @@
         "location": "[resourceGroup().location]",
         "apiVersion": "2016-03-30",
         "dependsOn": [
-          "[resourceId('Microsoft.Network/virtualNetworks', 'PDTITTrainingVNET')]",
+          "[resourceId('Microsoft.Network/virtualNetworks', 'TrainingVNET')]",
           "[resourceId('Microsoft.Network/publicIPAddresses', variables('adipName'))]"
         ],
         "tags": {
@@ -248,120 +222,7 @@
           }
         ]
       },
-      {
-        "name": "[variables('IISVMNicName')]",
-        "type": "Microsoft.Network/networkInterfaces",
-        "location": "[resourceGroup().location]",
-        "apiVersion": "2016-03-30",
-        "dependsOn": [
-          "[resourceId('Microsoft.Network/virtualNetworks', 'PDTITTrainingVNET')]",
-          "[resourceId('Microsoft.Network/publicIPAddresses', variables('iisipName'))]"
-        ],
-        "tags": {
-          "displayName": "IISVMNic"
-        },
-        "properties": {
-          "ipConfigurations": [
-            {
-              "name": "ipconfig1",
-              "properties": {
-                "privateIPAllocationMethod": "Dynamic",
-                "subnet": {
-                  "id": "[variables('IISVMSubnetRef')]"
-                },
-                "publicIPAddress": {
-                  "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('iisipName'))]"
-                }
-              }
-            }
-          ]
-        }
-      },
-      {
-        "name": "[parameters('IISVMName')]",
-        "type": "Microsoft.Compute/virtualMachines",
-        "location": "[resourceGroup().location]",
-        "apiVersion": "2015-06-15",
-        "dependsOn": [
-          "[resourceId('Microsoft.Storage/storageAccounts', variables('vmstorageName'))]",
-          "[resourceId('Microsoft.Network/networkInterfaces', variables('IISVMNicName'))]"
-        ],
-        "tags": {
-          "displayName": "IISVM"
-        },
-        "properties": {
-          "hardwareProfile": {
-            "vmSize": "[variables('IISVMVmSize')]"
-          },
-          "osProfile": {
-            "computerName": "[parameters('IISVMName')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPassword')]"
-          },
-          "storageProfile": {
-            "imageReference": {
-              "publisher": "[variables('IISVMImagePublisher')]",
-              "offer": "[variables('IISVMImageOffer')]",
-              "sku": "[parameters('IISVMWindowsOSVersion')]",
-              "version": "latest"
-            },
-            "osDisk": {
-              "name": "IISVMOSDisk",
-              "vhd": {
-                "uri": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('vmstorageName')), '2016-01-01').primaryEndpoints.blob, variables('IISVMStorageAccountContainerName'), '/', variables('IISVMOSDiskName'), '.vhd')]"
-              },
-              "caching": "ReadWrite",
-              "createOption": "FromImage"
-            }
-          },
-          "networkProfile": {
-            "networkInterfaces": [
-              {
-                "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('IISVMNicName'))]"
-              }
-            ]
-          }
-        },
-        "resources": [
-          {
-            "name": "IISInstall",
-            "type": "extensions",
-            "location": "[resourceGroup().location]",
-            "apiVersion": "2016-03-30",
-            "dependsOn": [
-              "[resourceId('Microsoft.Compute/virtualMachines', parameters('IISVMName'))]"
-            ],
-            "tags": {
-              "displayName": "IISInstall"
-            },
-            "properties": {
-              "publisher": "Microsoft.Compute",
-              "type": "CustomScriptExtension",
-              "typeHandlerVersion": "1.4",
-              "autoUpgradeMinorVersion": true,
-              "settings": {
-                "fileUris": [
-                  "[concat(parameters('VM2scriptUrl'))]"
-                ],
-                "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('scriptFolder'), '/', variables('VM2scriptFileName'))]"
-              }
-            }
-          }
-        ]
-      },
-      {
-        "name": "[variables('iisipName')]",
-        "type": "Microsoft.Network/publicIPAddresses",
-        "location": "[resourceGroup().location]",
-        "apiVersion": "2016-03-30",
-        "dependsOn": [ ],
-        "tags": {
-          "displayName": "iisip"
-        },
-        "properties": {
-          "publicIPAllocationMethod": "Dynamic"
-        }
-      },
+      
       {
         "name": "[variables('adipName')]",
         "type": "Microsoft.Network/publicIPAddresses",

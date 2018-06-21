@@ -40,14 +40,14 @@
       "metadata": {
         "description": "script to execute"
       },
-      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzADEMS/vmextensions/deploy-ad.ps1"
+      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplatesAzAD+EMS/master/vmextensions/deploy-ad.ps1"
     },
     "VM2scriptUrl": {
       "type": "string",
       "metadata": {
         "description": "script to execute"
       },
-      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzADEMS/vmextensions/deploy-iis-full.ps1"
+      "defaultValue": "https://raw.githubusercontent.com/pdtit/ARMTemplatesAzAD+EMS/master/vmextensions/install-iis.ps1"
     },
     "ADVMWindowsOSVersion": {
       "type": "string",
@@ -97,7 +97,7 @@
     "scriptFolder": ".",
     "VM1scriptFileName": "deploy-ad.ps1",
     "VM1scriptParameters": "[concat(' -domain ', parameters('domainName'), ' -password ', parameters('adminPassword'))]",
-    "VM2scriptFileName": "deploy-iis-full.ps1",
+    "VM2scriptFileName": "deploy-iis.ps1",
     "iisipName": "iisip",
     "adipName": "adip"
   },  
@@ -324,7 +324,32 @@
         },
         "resources": [
           {
-            
+            "name": "IISInstall",
+            "type": "extensions",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2016-03-30",
+            "dependsOn": [
+              "[resourceId('Microsoft.Compute/virtualMachines', parameters('IISVMName'))]"
+            ],
+            "tags": {
+              "displayName": "IISInstall"
+            },
+            "properties": {
+              "publisher": "Microsoft.Compute",
+              "type": "CustomScriptExtension",
+              "typeHandlerVersion": "1.4",
+              "autoUpgradeMinorVersion": true,
+              "settings": {
+                "fileUris": [
+                  "[concat(parameters('VM2scriptUrl'))]"
+                ],
+                "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('scriptFolder'), '/', variables('VM2scriptFileName'))]"
+              }
+            }
+          }
+        ]
+      },
+      {
         "name": "[variables('iisipName')]",
         "type": "Microsoft.Network/publicIPAddresses",
         "location": "[resourceGroup().location]",
