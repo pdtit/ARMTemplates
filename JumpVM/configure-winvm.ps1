@@ -109,7 +109,7 @@ $installfile = "$path\$installer"
 msiexec /i $installfile /quiet /qn /log $path\thinlog.log
 Write-Host "Installing Thinfinity RDP" -ForegroundColor Green
 
-restart-service "RemoteDesktopWorkstationSvc"
+
 
 # Copy Thinfinity Configfile
 #$Path = $env:TEMP; 
@@ -122,8 +122,6 @@ restart-service "RemoteDesktopWorkstationSvc"
 
 #License Thinfinity 
 
-restart-service "RemoteDesktopWorkstationSvc"
-
 
 #Replace config settings for Thinfinity
 $configpath = "c:\programdata\Cybele Software\Thinfinity\Remote Desktop Workstation\Thinfinity.RemoteDesktop.Workstation.ini"
@@ -133,7 +131,7 @@ $configpath = "c:\programdata\Cybele Software\Thinfinity\Remote Desktop Workstat
 ((get-content -path $configpath -raw) -replace 'VNC=1','VNC=0') | set-content -path $configpath
 ((get-content -path $configpath -raw) -replace 'FT=1','FT=0') | set-content -path $configpath
 
-#restart-service "RemoteDesktopWorkstationSvc"
+restart-service "RemoteDesktopWorkstationSvc"
 
 
 
