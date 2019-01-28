@@ -16,22 +16,8 @@
       "metadata": {
         "description": "Password for the Virtual Machine."
       }
-    },
-    "_artifactsLocation": {
-      "type": "string",
-      "metadata": {
-      "description": "The base URI where artifacts required by this template are located. When the template is deployed using the accompanying scripts, a private location in the subscription will be used and this value will be automatically generated."
-      },
-      "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-custom-script-windows"
-    },
-
-    "_artifactsLocationSasToken": {
-      "type": "securestring",
-      "metadata": {
-        "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated."
-      },
-      "defaultValue": ""
     }
+    
   },
 
   "variables": {
@@ -52,8 +38,11 @@
     "virtualNetworkName": "jumpvmVNet",
     "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
     "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
-    "vmscriptFileName": "configure-winvm.ps1",
-    "vhdStorageAccountName": "[concat('vhdstorage', uniqueString(resourceGroup().id))]"
+    "vhdStorageAccountName": "[concat('vhdstorage', uniqueString(resourceGroup().id))]",
+    "scriptFolder": ".",
+    "scriptFileName": "config-winvm.ps1",
+    "fileToBeCopied": "ExtensionLog.txt"
+    
   },
 
   "resources": [
@@ -187,29 +176,26 @@
       },
       "resources": [
         {
-          "name": "customscript",
-          "type": "extensions",
+          "apiVersion": "2018-06-01",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
           "location": "[resourceGroup().location]",
-          "apiVersion": "2016-03-30",
           "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]"
+              "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
           ],
-          "tags": {
-            "displayName": "customscript"
-          },
           "properties": {
-            "publisher": "Microsoft.Compute",
-            "type": "CustomScriptExtension",
-            "typeHandlerVersion": "1.4",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-              "fileUris": [
-                "[concat(parameters('vmscriptsURL'), variables('vmscriptFileName'))]"
-              ],
-              "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ', variables('vmscriptFileName'))]"
-            }
+              "publisher": "Microsoft.Compute",
+              "type": "CustomScriptExtension",
+              "typeHandlerVersion": "1.7",
+              "autoUpgradeMinorVersion":true,
+              "settings": {
+                  "fileUris": [
+                     "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/JumpVM/configure-winvm.ps1"
+                  ],
+                  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-winvm.ps1"
+              }
           }
-        }
+      }
       ]
     }
 

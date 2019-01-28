@@ -112,23 +112,29 @@ Write-Host "Installing Thinfinity RDP" -ForegroundColor Green
 
 
 # Copy Thinfinity Configfile
-$Path = $env:TEMP; 
-$zipfile = "Cybele_Software.zip"
-Invoke-WebRequest "https://pdtitlabsstorage.blob.core.windows.net/templates/jumpvm/Cybele_Software.zip" -Outfile $Path\$zipfile
-$file = "$path\$zipfile"
-expand-archive $file -destinationpath c:\programdata -force
+#$Path = $env:TEMP; 
+#$zipfile = "Cybele_Software.zip"
+#Invoke-WebRequest "https://pdtitlabsstorage.blob.core.windows.net/templates/jumpvm/Cybele_Software.zip" -Outfile $Path\$zipfile
+#$file = "$path\$zipfile"
+#expand-archive $file -destinationpath c:\programdata -force
 
 #Start-process -FIlePath "c:\program files\thinfinity\Remote Desktop Workstation\Thinfinity.RemoteDesktop.Workstation.exe"
 
-#Replace config settings for Thinfinity
-#$configpath = "c:\programdata\Cybele Software\Thinfinity\Remote Desktop Workstation\Thinfinity.RemoteDesktop.Workstation.ini"
+#License Thinfinity 
 
-#((get-content -path $configpath -raw) -replace '8081','443') | set-content -path $configpath
-#((get-content -path $configpath -raw) -replace 'type=Digest','type=None') | set-content -path $configpath
-#((get-content -path $configpath -raw) -replace 'NtlmUsers=','NtlmUsers=jumpvm\labadmin') | set-content -path $configpath
-#((get-content -path $configpath -raw) -replace 'type=Digest','type=NTLM') | set-content -path $configpath
-#((get-content -path $configpath -raw) -replace 'VNC=1','VNC=0') | set-content -path $configpath
-#((get-content -path $configpath -raw) -replace 'FT=1','FT=0') | set-content -path $configpath
+
+#Replace config settings for Thinfinity
+$configpath = "c:\programdata\Cybele Software\Thinfinity\Remote Desktop Workstation\Thinfinity.RemoteDesktop.Workstation.ini"
+
+((get-content -path $configpath -raw) -replace '8081','443') | set-content -path $configpath
+((get-content -path $configpath -raw) -replace 'type=Digest','type=None') | set-content -path $configpath
+((get-content -path $configpath -raw) -replace 'type=Digest','type=None') | set-content -path $configpath
+((get-content -path $configpath -raw) -replace 'VNC=1','VNC=0') | set-content -path $configpath
+((get-content -path $configpath -raw) -replace 'FT=1','FT=0') | set-content -path $configpath
+
+restart-service "RemoteDesktopWorkstationSvc"
+
+
 
 
 
