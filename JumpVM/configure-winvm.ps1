@@ -109,7 +109,7 @@ $installfile = "$path\$installer"
 msiexec /i $installfile /quiet /qn /log $path\thinlog.log
 Write-Host "Installing Thinfinity RDP" -ForegroundColor Green
 
-
+restart-service "RemoteDesktopWorkstationSvc"
 
 # Copy Thinfinity Configfile
 #$Path = $env:TEMP; 
