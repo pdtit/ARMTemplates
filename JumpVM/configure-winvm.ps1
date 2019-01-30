@@ -106,7 +106,7 @@ $Path = $env:TEMP;
 $Installer = "Thinfinity_Remote_Desktop_Workstation_Setup_x64.msi"
 Invoke-WebRequest "http://www.cybelesoft.com/downloads/Thinfinity_Remote_Desktop_Workstation_Setup_x64.msi" -Outfile $Path\$Installer
 $installfile = "$path\$installer"
-msiexec /i $installfile /quiet /qn /log $path\thinlog.log
+msiexec /i $installfile /quiet /qn /log $path\thinlog.log EMAIL=nfr-license@cybelesoft.com SERIAL=FNSG-A7VE-K6ZZ-HNRE-AIKQ-BGKO-AMOD-FPAY
 Write-Host "Installing Thinfinity RDP" -ForegroundColor Green
 
 
