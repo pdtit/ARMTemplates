@@ -7,7 +7,7 @@ New-Item -Path $UserKey -Force
 New-ItemProperty -Path $AdminKey -Name "IsInstalled" -Value 0
 New-ItemProperty -Path $UserKey -Name "IsInstalled" -Value 0
 
-# Allow file downloads
+# Enable file downloads
 $HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
 $HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
 Set-ItemProperty -Path $HKLM -Name "1803" -Value 0
@@ -24,6 +24,24 @@ $HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones
 $HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4"
 Set-ItemProperty -Path $HKLM -Name "1803" -Value 0
 Set-ItemProperty -Path $HKCU -Name "1803" -Value 0
+
+# Disable IE Protected Mode
+$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
+$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
+Set-ItemProperty -Path $HKLM -Name "2500" -Value 3
+Set-ItemProperty -Path $HKCU -Name "2500" -Value 3
+$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2"
+$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2"
+Set-ItemProperty -Path $HKLM -Name "2500" -Value 3
+Set-ItemProperty -Path $HKCU -Name "2500" -Value 3
+$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3"
+$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3"
+Set-ItemProperty -Path $HKLM -Name "2500" -Value 3
+Set-ItemProperty -Path $HKCU -Name "2500" -Value 3
+$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4"
+$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4"
+Set-ItemProperty -Path $HKLM -Name "2500" -Value 3
+Set-ItemProperty -Path $HKCU -Name "2500" -Value 3
 
 # Allow file downloads
 $HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
@@ -43,7 +61,7 @@ $HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones
 Set-ItemProperty -Path $HKLM -Name "1807" -Value 0
 Set-ItemProperty -Path $HKCU -Name "1807" -Value 0
 
-# Allow file downloads
+# Enable Font downloads
 $HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
 $HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
 Set-ItemProperty -Path $HKLM -Name "1604" -Value 0
@@ -60,6 +78,8 @@ $HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones
 $HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4"
 Set-ItemProperty -Path $HKLM -Name "1604" -Value 0
 Set-ItemProperty -Path $HKCU -Name "1604" -Value 0
+
+
 
 # allow websites to open windows without address or status bars 
 $HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
@@ -93,57 +113,29 @@ Set-ItemProperty -Path $HKCU -Name "1407" -Value 0
 
 
 # Install Chrome
-$Path = $env:TEMP; 
-$Installer = "chrome_installer.exe"
-Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile $Path\$Installer
-Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait
+$workdir = "d:\installer\"
+$ChromeInstaller = "chrome_installer.exe"
+Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile $workdir\$ChromeInstaller
+Start-Process -FilePath $workdir\$ChromeInstaller -Args "/silent /install" -Verb RunAs -Wait
 Write-Host "Installing Chrome Browser" -ForegroundColor Green
 
 
-
 # Install Thinfinity RDP
-#$Path = $env:TEMP; 
-#$Installer = "Thinfinity_Remote_Desktop_Workstation_Setup_x64.msi"
-#Invoke-WebRequest "http://www.cybelesoft.com/downloads/Thinfinity_Remote_Desktop_Workstation_Setup_x64.msi" -Outfile $Path\$Installer
-#$installfile = "$path\$installer"
-#msiexec /i $installfile /quiet /qn /log $path\thinlog.log
-#Write-Host "Installing Thinfinity RDP" -ForegroundColor Green
+$workdir = "d:\installer\"
+$ThinInstaller = "Thinfinity_Remote_Desktop_Workstation_Setup_x64.msi"
+Invoke-WebRequest "http://www.cybelesoft.com/downloads/Thinfinity_Remote_Desktop_Workstation_Setup_x64.msi" -Outfile $workdir\$ThinInstaller
+$installfile = "$workdir\$Thininstaller"
+msiexec /i $installfile /quiet /qn /log $path\thinlog.log EMAIL=nfr-license@cybelesoft.com LICENSE=FNSG-A7VE-K6ZZ-HNRE-AIKQ-BGKO-AMOD-FPAY
+Write-Host "Installing Thinfinity RDP" -ForegroundColor Green
 
+# ThinFinity Port updates from default 8081 to 443 runs from Azure Runbook 
 
+# Silent install Adobe Reader DC
+$workdir = "d:\installer\"
+$adobesource = "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1502320053/AcroRdrDC1502320053_en_US.exe"
+$adobedestination = "$workdir\adobeDC.exe"
+Invoke-WebRequest $adobesource -OutFile $adobedestination
 
-# Copy Install-Thinfinity PowerSHell script
-$Path = $env:TEMP; 
-$zipfile = "Cybele_Software.zip"
-$installscript = "install-thinfinity.ps1"
-Invoke-WebRequest "https://pdtitlabsstorage.blob.core.windows.net/templates/jumpvm/Cybele_Software.zip" -Outfile $Path\$zipfile
-$file = "$path\$zipfile"
-expand-archive $file -destinationpath $path -force
-cd $path
+# Start the installation
 
-Start-Process powershell.exe -Verb RunAs -Argument .\$Installscript 
-
-
-#License Thinfinity 
-
-
-#Replace config settings for Thinfinity
-#$configpath = "& 'c:\programdata\Cybele Software\Thinfinity\Remote Desktop Workstation\Thinfinity.RemoteDesktop.Workstation.ini'"
-#
-#(get-content -path $configpath -raw) -replace '8081','443' -replace 'type=Digest','type=None' -replace 'VNC=1','VNC=0' -replace 'FT=1','FT=0' | set-content -path $configpath
-#
-#restart-service "RemoteDesktopWorkstationSvc"
-
-
-
-
-
-
-#restart-service -name "RemoteDesktopWorkstationSvc"
-
-#Write-Host "Reconfiguring Thinfinity RDP" -ForegroundColor Green
-
-
-
-
-
-
+Start-Process -FilePath "$workdir\adobeDC.exe" -ArgumentList "/sPB /rs"
