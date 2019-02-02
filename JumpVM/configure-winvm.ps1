@@ -113,7 +113,7 @@ Set-ItemProperty -Path $HKCU -Name "1407" -Value 0
 
 
 # Install Chrome
-$workdir = "d:\installer\"
+$workdir = $env:TEMP;
 $ChromeInstaller = "chrome_installer.exe"
 Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile $workdir\$ChromeInstaller
 Start-Process -FilePath $workdir\$ChromeInstaller -Args "/silent /install" -Verb RunAs -Wait
@@ -121,7 +121,7 @@ Write-Host "Installing Chrome Browser" -ForegroundColor Green
 
 
 # Install Thinfinity RDP
-$workdir = "d:\installer\"
+$workdir = $env:TEMP;
 $ThinInstaller = "Thinfinity_Remote_Desktop_Workstation_Setup_x64.msi"
 Invoke-WebRequest "http://www.cybelesoft.com/downloads/Thinfinity_Remote_Desktop_Workstation_Setup_x64.msi" -Outfile $workdir\$ThinInstaller
 $installfile = "$workdir\$Thininstaller"
@@ -131,7 +131,7 @@ Write-Host "Installing Thinfinity RDP" -ForegroundColor Green
 # ThinFinity Port updates from default 8081 to 443 runs from Azure Runbook 
 
 # Silent install Adobe Reader DC
-$workdir = "d:\installer\"
+$workdir = $env:TEMP;
 $adobesource = "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1502320053/AcroRdrDC1502320053_en_US.exe"
 $adobedestination = "$workdir\adobeDC.exe"
 Invoke-WebRequest $adobesource -OutFile $adobedestination
