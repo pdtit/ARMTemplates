@@ -7,6 +7,14 @@ New-Item -Path $UserKey -Force
 New-ItemProperty -Path $AdminKey -Name "IsInstalled" -Value 0
 New-ItemProperty -Path $UserKey -Name "IsInstalled" -Value 0
 
+#Disable popup to allow your PC to be discoverable on the network
+$networkkey = "HKLM:\System\CurrentControlSet\Control\Network\NewNetworkWindowOff"
+New-Item -Path $networkkey -Force
+
+#Don't load Server Manager upon first logon
+New-ItemProperty -Path HKCU:\Software\Microsoft\ServerManager -Name DoNotOpenServerManagerAtLogon -PropertyType DWORD -Value "0x1" –Force
+
+
 # Enable file downloads
 $HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
 $HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
