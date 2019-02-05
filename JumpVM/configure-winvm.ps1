@@ -12,7 +12,20 @@ $networkkey = "HKLM:\System\CurrentControlSet\Control\Network\NewNetworkWindowOf
 New-Item -Path $networkkey -Force
 
 #Don't load Server Manager upon first logon
-New-ItemProperty -Path HKCU:\Software\Microsoft\ServerManager -Name DoNotOpenServerManagerAtLogon -PropertyType DWORD -Value "0x1" –Force
+$HKCU = "HKCU:\Software\Microsoft\ServerManager"
+Set-ItemProperty -path $HKCU -Name "DoNotOpenServerManagerAtLogon" -value 1 
+
+#Disable IE popup do not allow customized settings
+$HKLM = "HKLM:\Software\Policies\Microsoft\InternetExplorer\Main"
+$HKCU = "HKCU:\Software\Policies\Microsoft\InternetExplorer\Main"
+set-itemproperty -path $hklm -Name "DisableFirstRunCustomize" -value 1
+set-itemproperty -path $hklm -Name "DisableFirstRunCustomize" -value 1
+
+#Point to Portal.Azure.com as default IE Home Page
+$HKLM = "HKLM:\Software\Policies\Microsoft\InternetExplorer\Main"
+$HKCU = "HKCU:\Software\Policies\Microsoft\InternetExplorer\Main"
+set-itemproperty -path $hklm -Name "DisableFirstRunCustomize" -value 1
+set-itemproperty -path $hklm -Name "DisableFirstRunCustomize" -value 1
 
 
 # Enable file downloads
@@ -68,6 +81,25 @@ $HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones
 $HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4"
 Set-ItemProperty -Path $HKLM -Name "1807" -Value 0
 Set-ItemProperty -Path $HKCU -Name "1807" -Value 0
+
+
+# Allow file downloads
+$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
+$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
+Set-ItemProperty -Path $HKLM -Name "2707" -Value 0
+Set-ItemProperty -Path $HKCU -Name "2707" -Value 0
+$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2"
+$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2"
+Set-ItemProperty -Path $HKLM -Name "2707" -Value 0
+Set-ItemProperty -Path $HKCU -Name "2707" -Value 0
+$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3"
+$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3"
+Set-ItemProperty -Path $HKLM -Name "2707" -Value 0
+Set-ItemProperty -Path $HKCU -Name "2707" -Value 0
+$HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4"
+$HKCU = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4"
+Set-ItemProperty -Path $HKLM -Name "2707" -Value 0
+Set-ItemProperty -Path $HKCU -Name "2707" -Value 0
 
 # Enable Font downloads
 $HKLM = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1"
