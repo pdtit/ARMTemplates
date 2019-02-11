@@ -160,6 +160,16 @@ Start-Process -FilePath $workdir\$ChromeInstaller -Args "/silent /install" -Verb
 Write-Host "Installing Chrome Browser" -ForegroundColor Green
 
 
+# Install Thinfinity RDP
+$workdir = $env:TEMP;
+$ThinInstaller = "Thinfinity_Remote_Desktop_Workstation_Setup_x64.msi"
+Invoke-WebRequest "http://www.cybelesoft.com/downloads/Thinfinity_Remote_Desktop_Workstation_Setup_x64.msi" -Outfile $workdir\$ThinInstaller
+$installfile = "$workdir\$Thininstaller"
+msiexec /i $installfile /quiet /qn /log $path\thinlog.log EMAIL=nfr-license@cybelesoft.com LICENSE=FNSG-A7VE-K6ZZ-HNRE-AIKQ-BGKO-AMOD-FPAY
+Write-Host "Installing Thinfinity RDP" -ForegroundColor Green
+
+# ThinFinity Port updates from default 8081 to 443 runs from Azure Runbook 
+
 # Silent install Adobe Reader DC
 $workdir = $env:TEMP;
 $adobesource = "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1502320053/AcroRdrDC1502320053_en_US.exe"
