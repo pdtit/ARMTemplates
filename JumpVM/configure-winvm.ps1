@@ -185,12 +185,12 @@ Invoke-WebRequest -Uri $azurestoxsource -OutFile $azurestoxdestination
 Start-Process -FilePath $workdir\$azstoxinstaller -Args "/silent /install" -Verb RunAs -Wait
 
 # Silent install Docker Desktop
-$workdir = $env:TEMP;
-$dockerinstaller = "Docker Desktop Explorer.exe"
-$dockersource = "https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe"
-$dockerdestination = "$workdir\Docker Desktop Explorer.exe"
-Invoke-WebRequest -Uri $dockersource -OutFile $dockerdestination 
-Start-Process -FilePath $workdir\$dockerinstaller -Args "install --quiet" -Verb RunAs -Wait
+#$workdir = $env:TEMP;
+#$dockerinstaller = "Docker Desktop Explorer.exe"
+#$dockersource = "https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe"
+#$dockerdestination = "$workdir\Docker Desktop Explorer.exe"
+#Invoke-WebRequest -Uri $dockersource -OutFile $dockerdestination 
+#Start-Process -FilePath $workdir\$dockerinstaller -Args "install --quiet" -Verb RunAs -Wait
 
 
 # Silent install MarkdownPad
