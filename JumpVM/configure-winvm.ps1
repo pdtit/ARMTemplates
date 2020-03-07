@@ -10,10 +10,10 @@ Start-Process -FilePath $workdir\$ChromeInstaller -Args "/silent /install" -Verb
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # silent install 7zip 
-choco install 7zip
-choco install putty.install
-choco install sql-server-management-studio
-choco install nodejs-lts
-choco install microsoft-edge
+choco install 7zip -confirm:$false
+choco install putty.install -confirm:$false
+choco install sql-server-management-studio -confirm:$false
+choco install nodejs-lts -confirm:$false
+choco install microsoft-edge -confirm:$false
 
 
