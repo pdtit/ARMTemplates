@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
@@ -22,8 +22,8 @@
 
   "variables": {
     "imagePublisher": "MicrosoftVisualStudio",
-    "imageOffer": "VisualStudio",
-    "imageSku": "VS-2017-Comm-WS2016",
+    "imageOffer": "VisualStudio2019latest",
+    "imageSku": "vs-2019-comm-latest-ws2019",
     "OSDiskName": "jumpvmosdisk",
     "nicName": "jumpvmnic",
     "addressPrefix": "10.1.0.0/16",
@@ -178,7 +178,7 @@
         {
           "apiVersion": "2018-06-01",
           "type": "Microsoft.Compute/virtualMachines/extensions",
-          "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
+          "name": "[concat(variables('vmName'),'/', 'VMConfig')]",
           "location": "[resourceGroup().location]",
           "dependsOn": [
               "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
@@ -190,9 +190,9 @@
               "autoUpgradeMinorVersion":true,
               "settings": {
                   "fileUris": [
-                     "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/JumpVM/configure-winvm.ps1"
+                     "https://raw.githubusercontent.com/pdtit/ARMtemplates/master/JumpVM/configurevm.ps1"
                   ],
-                  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-winvm.ps1"
+                  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configurevm.ps1"
               }
           }
       }
