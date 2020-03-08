@@ -1,14 +1,3 @@
-#Don't load Server Manager upon first logon
-
-$HKCU = "HKCU:\Software\Microsoft\ServerManager"
-
-New-ItemProperty -Path $HKCU -Name DoNotOpenServerManagerAtLogon -PropertyType DWORD -Value "0x1" –Force
-
-# Disable popup to allow your PC to be discoverable on the network
-
-$networkkey = "HKLM:\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" 
-
-New-Item -Path $networkkey -Force
 
 # Silent install Chocolatey packager
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
