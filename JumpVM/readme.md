@@ -1,6 +1,13 @@
 # JumpVM - Windows 2019 Server with Visual Studio 2019 
 
-This template deploys a single Azure Virtual Machine, running the following software:
+This template deploys a single Azure Virtual Machine, running the following:
+
+# Settings
+- local admin: labadmin
+- local admin password: L@BadminPa55w.rd
+- Azure VNET: jumpVMVNet (10.1.0.0./16)
+- Subnet: SubNet (10.1.0.0/24)
+- Public IP: jumpvmip (basic / static)
 
 # Operating System and core tools
 - Operating System Windows Server 2019 Enterprise
