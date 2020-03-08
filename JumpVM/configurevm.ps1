@@ -7,7 +7,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco install 7zip -confirm:$false
 choco install putty.install -confirm:$false
 choco install microsoft-edge -confirm:$false
-choco install markdownpad2 -confirm:$false
+choco install marktext -confirm:$false
 choco install windows-admin-center -confirm:$false
 choco install foxitreader -confirm:$false
 choco install microsoft-edge -confirm:$false
