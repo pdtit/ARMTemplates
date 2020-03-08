@@ -201,14 +201,6 @@ $markdownreaderdestination = "$workdir\markdownpad2-setup.exe"
 Invoke-WebRequest -Uri $markdownreadersource -OutFile $markdownreaderdestination 
 Start-Process -FilePath $workdir\$markdownreaderinstaller -Args "/exenoui /install" -Verb RunAs -Wait
 
-# Silent install Chocolatey packager
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-# silent install 7zip 
-choco install 7zip
-choco install putty.install
-choco install sql-server-management-studio
-choco install nodejs-lts
-choco install microsoft-edge
 
 
