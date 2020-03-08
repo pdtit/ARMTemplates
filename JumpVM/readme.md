@@ -27,4 +27,4 @@ This template deploys a single Azure Virtual Machine, running the following soft
 
 ## Setup Instructions ##
 
-[![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://azuredeploy.net/)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpdtit%2FARMTemplates%2Fmaster%2FJumpVM%2Fazuredeploy.json)
