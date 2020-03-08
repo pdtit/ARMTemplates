@@ -1,9 +1,13 @@
 #Don't load Server Manager upon first logon
+
 $HKCU = "HKCU:\Software\Microsoft\ServerManager"
+
 New-ItemProperty -Path $HKCU -Name DoNotOpenServerManagerAtLogon -PropertyType DWORD -Value "0x1" –Force
 
-#Disable popup to allow your PC to be discoverable on the network
-$networkkey = "HKLM:\System\CurrentControlSet\Control\Network\NewNetworkWindowOff"
+# Disable popup to allow your PC to be discoverable on the network
+
+$networkkey = "HKLM:\System\CurrentControlSet\Control\Network\NewNetworkWindowOff" 
+
 New-Item -Path $networkkey -Force
 
 # Silent install Chocolatey packager
