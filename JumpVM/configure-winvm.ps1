@@ -7,10 +7,10 @@ $networkkey = "HKLM:\System\CurrentControlSet\Control\Network\NewNetworkWindowOf
 New-Item -Path $networkkey -Force
 
 # Install Chrome
-$workdir = $env:TEMP;
-$ChromeInstaller = "chrome_installer.exe"
-Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile $workdir\$ChromeInstaller
-Start-Process -FilePath $workdir\$ChromeInstaller -Args "/silent /install" -Verb RunAs -Wait
+#$workdir = $env:TEMP;
+#$ChromeInstaller = "chrome_installer.exe"
+#Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile $workdir\$ChromeInstaller
+#Start-Process -FilePath $workdir\$ChromeInstaller -Args "/silent /install" -Verb RunAs -Wait
 
 
 # Silent install Chocolatey packager
@@ -24,6 +24,8 @@ choco install microsoft-edge -confirm:$false
 choco install markdownpad2 -confirm:$false
 choco install windows-admin-center -confirm:$false
 choco install foxitreader -confirm:$false
+choco install microsoft-edge -confirm:$false
+choco install googlechrome -confirm:$false
 
 # Azure tools
 choco install azure-cli -confirm:$false
