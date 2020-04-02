@@ -73,7 +73,7 @@ code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 code --install-extension ms-vscode.theme-markdownkit
 code --install-extension davidanson.vscode-markdownlint
 code --install-extension ms-vscode.notepadplusplus-keybindings
-code --install-extension ms-vscode.powershel
+code --install-extension ms-vscode.powershell
 code --install-extension ms-python.python
 code --install-extension joytrekker.rainier
 code --install-extension ms-vscode-remote.remote-wsl
