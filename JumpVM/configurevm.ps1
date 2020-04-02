@@ -27,6 +27,8 @@ choco install azurepowershell -confirm:$false
 choco install azure-data-studio -confirm:$false
 # Install Cosmos DB Explorer
 choco install cosmosdbexplorer -confirm:$false
+# Install Azure Functions Core Tools
+choco install azure-functions-core-tools
 # Install Azure Storage Explorer
 choco install microsoftazurestorageexplorer -confirm:$false
 # Install Service Bus Explorer
