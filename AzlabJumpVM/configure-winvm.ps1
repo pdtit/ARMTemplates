@@ -170,6 +170,8 @@ Write-Host "Installing Thinfinity RDP" -ForegroundColor Green
 
 # ThinFinity Port updates from default 8081 to 443 runs from Azure Runbook 
 
+## updates
+
 # Silent install Adobe Reader DC
 $workdir = $env:TEMP;
 $adobesource = "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/1502320053/AcroRdrDC1502320053_en_US.exe"
