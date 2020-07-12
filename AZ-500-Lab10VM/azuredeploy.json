@@ -5,14 +5,14 @@
     "adminUsername": {
       "type": "string",
       "minLength": 1,
-      "defaultValue": "labadmin",
+      "defaultValue": "Student",
       "metadata": {
         "description": "Username for the Virtual Machine."
       }
     },
     "adminPassword": {
       "type": "securestring",
-      "defaultValue": "L@BadminPa55w.rd",
+      "defaultValue": "Pa55w.rd1234",
       "metadata": {
         "description": "Password for the Virtual Machine."
       }
