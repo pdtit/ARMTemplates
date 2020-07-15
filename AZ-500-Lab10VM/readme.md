@@ -1,12 +1,15 @@
-# JumpVM - Windows 2019 Server with Visual Studio 2019 
+# JumpVM - Windows 2019 Server with Visual Studio 2019
+# SQL Azure Server and database
 
-This template deploys a single Azure Virtual Machine, running the following:
+This template deploys a single Azure Virtual Machine and SQL Azure database, which is the required infrastructure for AZ-500 Lab 10.
+
+The VM is using the following configuration:
 
 # Settings
 - local admin: Student
 - local admin password: Pa55w.rd1234
-- Azure VNET: jumpVMVNet (10.110.0.0./16)
-- Subnet: SubNet (10.110.0.0/24)
+- Azure VNET: az-500-VNet (10.110.0.0./16)
+- Subnet: az-500subnet1 (10.110.0.0/24)
 - Public IP: jumpvmip (basic / dynamic)
 
 # Operating System and core tools
