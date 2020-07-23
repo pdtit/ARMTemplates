@@ -74,8 +74,7 @@ In this task, you will deploy an Azure VM, which will automatically install Visu
 
 This kicks of the deployment of the needed Virtual Machine resources and Azure SQL resources. This deployment will take anything between **15-20 minutes** on average, but could vary. 
 
-
-    >**Note**: while the deployment is running, you can move on with the next task. Make sure you check back once the deployment is complete, to familiarize yourself with the deployed resources and names used. 
+    >**Note**: you need to wait for the VM Deployment to be completed successfully, before moving on with the next tasks.
 
 
 ### Exercise 2: Deploy Azure Key Vault
