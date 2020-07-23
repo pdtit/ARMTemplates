@@ -30,6 +30,7 @@ In this lab, you will complete the following exercises:
 
 - **\\Allfiles\\Labs\\10\\program.cs**
 
+### Total Lab Time estimate: 60 minutes
 
 ### Exercise 1: Deploy the base infrastructure from an ARM template
 
@@ -73,13 +74,11 @@ In this task, you will deploy an Azure VM, which will automatically install Visu
 
 This kicks of the deployment of the needed Virtual Machine resources and Azure SQL resources. This deployment will take anything between **15-20 minutes** on average, but could vary. 
 
-```
+
     >**Note**: while the deployment is running, you can move on with the next task. Make sure you check back once the deployment is complete, to familiarize yourself with the deployed resources and names used. 
-```
 
-### Exercise 1: Deploy the base infrastructure from an ARM template
 
-### Estimated time to complete: 60 minutes
+### Exercise 2: Deploy Azure Key Vault
 
 > For all the resources in this lab, we are using the **East (US)** region. Verify with your instructor this is region to use for you class. 
 
@@ -206,8 +205,6 @@ In this task, you will add a key to the Key Vault and view information about the
 
 ### Exercise 3: Create an application to demonstrate using the Key Vault for encryption
 
-### Estimated time to complete: 15 minutes
-
 In this exercise, you will complete the following tasks:
 
 - Task 1: Enable a client application to access the Azure SQL Database service. 
@@ -290,8 +287,6 @@ In this task, you will grant the newly registered app permissions to access secr
 ### Exercise 4: Configure the Azure SQL Database for usage
 
 From the ARM-template deployment in Exercise 1, an Azure SQL Server instance and Azure SQL database resource **"medical"** got created automatically. You will update the empty database resource with a new table structure and select data columns for encryption
-
-### Estimated time to complete: 15 minutes
 
 In this exercise, you will complete the following tasks:
 
