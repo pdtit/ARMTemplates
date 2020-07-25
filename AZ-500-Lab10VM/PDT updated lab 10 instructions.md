@@ -9,20 +9,23 @@ lab:
 
 ## Lab scenario
 
-You have been asked to create a proof of concept application that makes use of the Azure SQL Database support for Always Encrypted functionality. All of the secrets and keys used in this scenario should be stored in the Key Vault. The application should be registered in Azure Active Directory (Azure AD) in order to enhance its security posture. To accomplish these objectives, the proof of concept should include:
+You have been asked to create a proof of concept application that makes use of the Azure SQL Database support for Always Encrypted functionality. All of the secrets and keys used in this scenario should be stored in Key Vault. The application should be registered in Azure Active Directory (Azure AD) in order to enhance its security posture. To accomplish these objectives, the proof of concept should include:
 
 - Creating an Azure Key Vault and storing keys and secrets in the vault.
 - Create a SQL Database and encrypting content of columns in database tables by using Always Encrypted.
 
-> For all the resources in this lab, we are using the **East US** region. Verify with your instructor this is the region to use for class. To keep the focus on the security aspects of Azure, related to building this proof of concept, you will start from an automated ARM template deployment to speed up the infrastructure deployment task. 
+> For all the resources in this lab, we are using the **East US** region. Verify with your instructor this is the region to use for class. 
+
+To keep the focus on the security aspects of Azure, related to building this proof of concept, you will start from an automated ARM template deployment, setting up a Virtual Machine with Visual Studio 2019 and SQL Server Management Studio 2018.
 
 ## Lab objectives
 
 In this lab, you will complete the following exercises:
 
-- Exercise 1: Deploy the base Azure infrastructure from an ARM template
+- Exercise 1: Deploy the Management Server using an ARM template
 - Exercise 2: Configure the Key Vault resource with a key and a secret
-- Exercise 3: Create an application to demonstrate using the Key Vault for encryption
+- Exercise 3: Prepare an Azure SQL database structure
+- Exercise 4: Run a C-Sharp application to demonstrate Key Vault integration for SQL database encryption
 
 ## Lab files:
 
@@ -74,7 +77,7 @@ In this task, you will deploy an Azure VM, which will automatically install Visu
 
 This kicks of the deployment of the needed Virtual Machine resources and Azure SQL resources. This deployment will take anything between **15-20 minutes** on average, but could vary. 
 
-    >**Note**: you need to wait for the VM Deployment to be completed successfully, before moving on with the next tasks.
+    >**Note**: you don't have to wait for the ARM template deployment to be completed successfully, before moving on with the next tasks.
 
 
 ### Exercise 2: Deploy Azure Key Vault
@@ -108,7 +111,7 @@ In this task, you will create an Azure Key Vault resource. You will also configu
 
 1. In the Azure portal, in the **Search resources, services, and docs** text box at the top of the Azure portal page, type **Resource groups** and press the **Enter** key.
 
-1. On the **Resource groups** blade, in the list of resource group, click the **AZ500LAB10** (or other name you chose) entry.
+1. On the **Resource groups** blade, in the list of resource group, click the **AZ500LAB10** (or other name you chose earlier) entry.
 
 1. On the Resource Group blade, click the entry representing the newly created Key Vault. 
 
@@ -142,7 +145,7 @@ In this task, you will add a key to the Key Vault and view information about the
     $key = Add-AZKeyVaultKey -VaultName $kv.VaultName -Name 'MyLabKey' -Destination 'Software'
     ```
 
-    >**Note**: The name of the key is MyLabKey
+    >**Note**: The name of the key is **MyLabKey**
 
 1. In the PowerShell session within the Cloud Shell pane, run the following to verify the key was created:
 
@@ -283,7 +286,7 @@ In this task, you will grant the newly registered app permissions to access secr
 1. Close the Cloud Shell pane. 
 
 
-### Exercise 4: Configure the Azure SQL Database for usage
+### Exercise 3: Configure the Azure SQL Database for usage
 
 From the ARM-template deployment in Exercise 1, an Azure SQL Server instance and Azure SQL database resource **"medical"** got created automatically. You will update the empty database resource with a new table structure and select data columns for encryption
 
@@ -298,6 +301,8 @@ In this exercise, you will complete the following tasks:
 1. In the Azure portal, in the **Search resources, services, and docs** text box at the top of the Azure portal page, type **SQL databases** and press the **Enter** key.
 
 1. In the list of SQL databases, click the **medical(<randomsqlservername>)** entry.
+
+>**Note**: If the database cannot be found, it means the ARM template deployment you kicked off in Exercise 1 is not completed yet. You can validate this by browsing to the Azure Resource Group "Az500Lab10" (or other name you chose), and selecting **Deployments** from the Settings pane.  
 
 1. On the SQL database blade, in the **Settings** section, click **Connection strings**. 
 
@@ -314,6 +319,8 @@ In this task, you log on to the Windows Virtual Machine you deployed from the AR
 1. In the Azure portal, in the **Search resources, services, and docs** text box at the top of the Azure portal page, type **virtual machines** and press the **Enter** key.
 
 1. From the list of Virtual Machines shown, click the **az500-10-vm1** Virtual Machine. From the **az500-10-vm1** blade, click **Overview**, and take note of the **Public IP address**. You will use this later. 
+
+>**Note**: If the Virtual Machine cannot be found, it means the ARM template deployment you kicked off in Exercise 1 is not completed yet. You can validate this by browsing to the Azure Resource Group "Az500Lab10" (or other name you chose), and selecting **Deployments** from the Settings pane.  
 
 #### Task 3: Create a table in the SQL Database and select data columns for encryption
 
@@ -403,7 +410,8 @@ In this task, you will connect to the SQL Database with SQL Server Management St
     >**Note**: The **Always Encrypted Keys** subnode contains the **Column Master Keys** and **Column Encryption Keys** subfolders.
 
 
-#### Task 5: Build a Console Application to work with Encrypted Columns
+### Exercise 4: Build a Console Application to work with Encrypted Columns
+#### Task 1: Updating a C-sharp console app using Visual Studio 2019
 
 You will create a Console application using Visual Studio to load data into the encrypted columns and then access that data securely using a connection string that accesses the key in the Key Vault.
 
