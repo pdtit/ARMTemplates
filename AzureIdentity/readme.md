@@ -21,7 +21,7 @@ This template deploys a Windows Server 2016 VM, and configuring it as an ADDS Se
 
 ## Setup Instructions ##
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpdtit%2FARMTemplates%2Fmaster%2FAzureIdentity%2Fazuredeploy.json
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpdtit%2FARMTemplates%2Fmaster%2FAzureIdentity%2Fazuredeploy.json)
 
 You can use the "Deploy to Azure" button to have this ADDSVM deployed into your Azure subscription right away. 
 
