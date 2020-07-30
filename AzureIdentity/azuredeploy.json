@@ -4,28 +4,28 @@
   "parameters": {
     "adminUsername": {
       "type": "string",
-      "defaultValue": "demouser",
+      "defaultValue": "labadmin",
       "metadata": {
         "description": "The name of the administrator account of the new VM and domain"
       }
     },
     "adminPassword": {
       "type": "securestring",
-      "defaultValue": "demo@pass123",
+      "defaultValue": "L@BadminPa55w.rd",
       "metadata": {
         "description": "The password for the administrator account of the new VM and domain"
       }
     },
     "domainName": {
       "type": "string",
-      "defaultValue": "opsgilitylab.demo",
+      "defaultValue": "addomain.demo",
       "metadata": {
         "description": "The FQDN of the Active Directory Domain to be created"
       }
     },
     "dnsPrefix": {
       "type": "string",
-      "defaultValue": "opslabvm",
+      "defaultValue": "addemolabvm",
       "metadata": {
         "description": "The DNS prefix for the public IP address used by the VM"
       }
@@ -46,10 +46,10 @@
     }
   },
   "variables": {
-    "virtualNetworkName": "OPSTrainingVNET",
+    "virtualNetworkName": "AZTrainingVNET",
     "virtualNetworkAddressRange": "10.0.0.0/16",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'adsa')]",
-    "adRDPNAT": "OPSTrainingRDP",
+    "adRDPNAT": "ADDSTrainingRDP",
     "adNicName": "ADDSVMNic",
     "adNicIPAddress": "10.0.0.4",
     "adVMName": "ADDSVM",
@@ -188,7 +188,7 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "Standard_D2_v2"
+          "vmSize": "Standard_D2S_v3"
         },
         
         "osProfile": {
