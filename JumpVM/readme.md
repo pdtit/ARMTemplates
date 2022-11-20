@@ -1,4 +1,4 @@
-# JumpVM - Windows 2019 Server with Visual Studio 2019 
+# JumpVM - Windows 2022 Server with Visual Studio 2022 
 
 This template deploys a single Azure Virtual Machine, running the following:
 
