@@ -12,7 +12,7 @@
     },
     "adminPassword": {
       "type": "securestring",
-      "defaultValue": "L@BadminPa55w.rd",
+      "defaultValue": "P@55w.rdP@55w.rd",
       "metadata": {
         "description": "Password for the Virtual Machine."
       }
