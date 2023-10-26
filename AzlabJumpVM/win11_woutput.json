@@ -21,26 +21,26 @@
   },
 
   "variables": {
-    "imagePublisher": "MicrosoftVisualStudio",
-    "imageOffer": "VisualStudio2019latest",
-    "imageSku": "vs-2019-comm-latest-ws2019",
-    "OSDiskName": "jumpvmosdisk",
-    "nicName": "jumpvmnic",
+    "imagePublisher": "MicrosoftWindowsDesktop",
+    "imageOffer": "windows-11",
+    "imageSku": "win11-23h2-pro",
+    "OSDiskName": "win11vmosdisk",
+    "nicName": "win11vmnic",
     "addressPrefix": "10.1.0.0/16",
     "subnetName": "Subnet",
     "subnetPrefix": "10.1.0.0/24",
     "vhdStorageType": "Premium_LRS",
-    "publicIPAddressName": "jumpvmip",
+    "publicIPAddressName": "win11vmip",
     "publicIPAddressType": "static",
     "vhdStorageContainerName": "vhds",
-    "vmName": "jumpvm",
+    "vmName": "win11labvm",
     "vmSize": "Standard_DS2_V2",
-    "virtualNetworkName": "jumpvmVNet",
+    "virtualNetworkName": "win11vmVNet",
     "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
     "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
     "vhdStorageAccountName": "[concat('vhdstorage', uniqueString(resourceGroup().id))]",
     "scriptFolder": ".",
-    "scriptFileName": "config-winvm.ps1",
+    "scriptFileName": "configure-win11vm.ps1",
     "fileToBeCopied": "ExtensionLog.txt"
     
   },
@@ -190,9 +190,9 @@
               "autoUpgradeMinorVersion":true,
               "settings": {
                   "fileUris": [
-                     "https://raw.githubusercontent.com/pdtit/ARMtemplates/master/AzLabJumpVM/configure-winvm.ps1"
+                     "https://raw.githubusercontent.com/pdtit/ARMtemplates/master/AzLabJumpVM/configure-win11vm.ps1"
                   ],
-                  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-winvm.ps1"
+                  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-win11vm.ps1"
               }
           }
       }
