@@ -22,7 +22,7 @@
 
   "variables": {
     "imagePublisher": "MicrosoftWindowsDesktop",
-    "imageOffer": "windows-11",
+    "imageOffer": "windows11preview",
     "imageSku": "win11-23h2-pro",
     "OSDiskName": "win11vmosdisk",
     "nicName": "win11vmnic",
@@ -143,7 +143,14 @@
         "osProfile": {
           "computerName": "[variables('vmName')]",
           "adminUsername": "[parameters('adminUsername')]",
-          "adminPassword": "[parameters('adminPassword')]"
+          "adminPassword": "[parameters('adminPassword')]",
+          "windowsConfiguration": {
+                        "enableAutomaticUpdates": true,
+                        "provisionVmAgent": true,
+                        "patchSettings": {
+                            "enableHotpatching": "[parameters('enableHotpatching')]",
+                            "patchMode": "[parameters('patchMode')]"
+                        }
         },
         "storageProfile": {
           "imageReference": {
@@ -152,6 +159,14 @@
             "sku": "[variables('imageSku')]",
             "version": "latest"
           },
+          "licenseType": "Windows_Client",
+           "securityProfile": {
+                    "securityType": "[parameters('securityType')]",
+                    "uefiSettings": {
+                        "secureBootEnabled": "[parameters('secureBoot')]",
+                        "vTpmEnabled": "[parameters('vTPM')]"
+                    }
+                },
           "osDisk": {
             "name": "osdisk",
             "vhd": {
