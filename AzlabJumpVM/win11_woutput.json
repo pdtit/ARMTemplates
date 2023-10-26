@@ -17,23 +17,28 @@
           "description": "Password for the Virtual Machine."
         }
       },
-      
+     
         "patchMode": {
             "type": "string",
             "defaultValue": "AutomaticByOS"
         },
         "enableHotpatching": {
-            "type": "bool"
+            "type": "bool",
+            "defaultValue": false
         },
         "securityType": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "TrustedLaunch"
         },
         "secureBoot": {
-            "type": "bool"
+            "type": "bool",
+            "defaultValue": true
         },
         "vTPM": {
-            "type": "bool"
+            "type": "bool",
+            "defaultValue": true
         }
+  
       
     },
   
