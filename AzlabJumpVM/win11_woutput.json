@@ -19,7 +19,8 @@
       },
       
         "patchMode": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "AutomaticByOS"
         },
         "enableHotpatching": {
             "type": "bool"
