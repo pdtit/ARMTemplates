@@ -190,7 +190,7 @@
               "autoUpgradeMinorVersion":true,
               "settings": {
                   "fileUris": [
-                     "https://raw.githubusercontent.com/pdtit/ARMtemplates/master/AzLabJumpVM/configure-winlabvm.ps1"
+                     "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/configure-winlabvm.ps1"
                   ],
                   "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-winlabvm.ps1"
               }
