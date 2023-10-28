@@ -26,5 +26,10 @@ choco install neo4j-community
 choco install podman-desktop
 choco install podman-cli
 
+#install Docker on Windows Server
+Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
+Install-Package -Name docker -ProviderName DockerMsftProvider
+Restart-Computer
+
 $ docker desktop
 choco install docker-desktop
