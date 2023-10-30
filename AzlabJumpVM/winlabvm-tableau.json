@@ -192,7 +192,7 @@
                   "fileUris": [
                      "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/configure-winlabvm-tableau.ps1"
                   ],
-                  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-winlabvm-tableau.ps1.ps1"
+                  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-winlabvm-tableau.ps1"
               }
           }
       }
