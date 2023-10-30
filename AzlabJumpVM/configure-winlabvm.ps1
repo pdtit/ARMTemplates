@@ -13,6 +13,12 @@ choco feature enable -n allowGlobalConfirmation
 # install Google Chrome
 choco install googlechrome
 
+# install Cassandra
+choco install apache-cassandra
+
+# install python 3.10
+choco install python310
+
 # install PostgreSQL
 choco install postgresql15 --params '/Password:P@55w.rdP@55w.rd /Port:5433' --ia '--enable-components server,commandlinetools'
 
