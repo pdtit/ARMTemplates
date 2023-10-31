@@ -13,6 +13,9 @@ choco feature enable -n allowGlobalConfirmation
 # install Google Chrome
 choco install googlechrome
 
+# install Microsoft Visual Studio Code
+choco install vscode
+
 # install NodeJS
 choco install nodejs
 
