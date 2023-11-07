@@ -17,7 +17,7 @@ choco install googlechrome
 choco install anaconda3
 
 # install PostgreSQL
-choco install postgresql --params '/Password:P@55w.rdP@55w.rd /Port:5433' --ia '--enable-components server,commandlinetools'
+choco install postgresql --params '/password:P@55w.rdP@55w.rd' --ia '--enable-components server,commandlinetools'
 
 # install PGAdmin
 choco install pgadmin4
