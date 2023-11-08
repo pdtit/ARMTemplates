@@ -18,3 +18,6 @@ choco install terraform
 
 #install VSCode
 choco install vscode
+
+# install Notepad++
+choco install notepadplusplus
