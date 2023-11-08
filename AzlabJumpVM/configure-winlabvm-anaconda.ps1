@@ -24,8 +24,8 @@ choco install pgadmin4
 
 # install PostgreSQL using silent install
 # Download the installer
-$installerUrl = "https://get.enterprisedb.com/postgresql/postgresql-14.0-1-windows-x64.exe"
-$installerPath = "C:\Temp\postgresql-14.0-1-windows-x64.exe"
+$installerUrl = "https://get.enterprisedb.com/postgresql/postgresql-16.0-1-windows-x64.exe"
+$installerPath = "C:\Temp\postgresql-16.0-1-windows-x64.exe"
 Invoke-WebRequest -Uri $installerUrl -OutFile $installerPath
 
 # Run the installer
