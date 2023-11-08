@@ -21,3 +21,15 @@ choco install anaconda3
 
 # install PGAdmin
 choco install pgadmin4
+
+# install PostgreSQL using silent install
+# Download the installer
+$installerUrl = "https://get.enterprisedb.com/postgresql/postgresql-14.0-1-windows-x64.exe"
+$installerPath = "C:\Temp\postgresql-14.0-1-windows-x64.exe"
+Invoke-WebRequest -Uri $installerUrl -OutFile $installerPath
+
+# Run the installer
+$superPassword = "P@55w.rdP@55w.rd"
+$serviceName = "PostgreSQL"
+$servicePort = 5432
+& $installerPath --mode unattended --superpassword $superPassword --servicename $serviceName --serverport $servicePort
