@@ -16,7 +16,7 @@ choco install googlechrome
 # install Anaconda Distribution (Python 3.x) 2023.9.0
 choco install anaconda3
 
-# install PostgreSQL
+# install PostgreSQL - NOT USED FOR NOW SINCE THE PASSWORD PARAMETER IS NOT RECOGNIZED
 # choco install postgresql --params '/password:P@55w.rdP@55w.rd' --ia '--enable-components server,commandlinetools'
 
 # install PGAdmin
