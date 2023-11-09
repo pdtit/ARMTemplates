@@ -28,6 +28,9 @@ choco install tableau-desktop
     
     # Copy the zip file from the temp path to the desktop path
     #Copy-Item -Path $TempPath -Destination $DesktopPath
-    Get-ChildItem $Destination | ForEach-Object {Copy-Item -path $TempPath -Destination $_ -Force}
+    #Get-ChildItem $Destination | ForEach-Object {Copy-Item -path $TempPath -Destination $_ -Force}
 
+    $CopyscriptURL = "https://azlabstudentsstor.blob.core.windows.net/labartifacts/Tableau_Files.bat" 
+    Invoke-WebRequest -Uri $CopyscriptURL -OutFile $TempPath
+    Start-Process -FilePath "C:\Temp\Tableau_Files.bat"
     #endofscript
