@@ -27,3 +27,5 @@ choco install tableau-desktop
     
     # Copy the zip file from the temp path to the desktop path
     Copy-Item -Path $TempPath -Destination $DesktopPath
+
+    #endofscript
