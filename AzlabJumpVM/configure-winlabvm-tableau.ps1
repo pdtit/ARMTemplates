@@ -30,7 +30,8 @@ choco install tableau-desktop
     #Copy-Item -Path $TempPath -Destination $DesktopPath
     #Get-ChildItem $Destination | ForEach-Object {Copy-Item -path $TempPath -Destination $_ -Force}
 
+    $StartupPath = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"
     $CopyscriptURL = "https://azlabstudentsstor.blob.core.windows.net/labartifacts/Tableau_Files.bat" 
-    Invoke-WebRequest -Uri $CopyscriptURL -OutFile $TempPath
+    Invoke-WebRequest -Uri $CopyscriptURL -OutFile $StartupPath
     Start-Process -FilePath "C:\Temp\Tableau_Files.bat"
     #endofscript
