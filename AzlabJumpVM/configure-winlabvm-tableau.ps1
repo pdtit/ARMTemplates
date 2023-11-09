@@ -23,9 +23,9 @@ choco install tableau-desktop
     $DesktopPath = "$env:USERPROFILE\Desktop\Tableau_Files.zip" # Replace this with your desired desktop file name
     
     # Download the zip file from the GitHub URL and save it to the temp path
-    Invoke-WebRequest -Uri $SourceURL -OutFile $TempPath
+    Invoke-WebRequest -Uri $SourceURL -OutFile $DesktopPath     #$TempPath
     
     # Copy the zip file from the temp path to the desktop path
-    Copy-Item -Path $TempPath -Destination $DesktopPath
+    #Copy-Item -Path $TempPath -Destination $DesktopPath
 
     #endofscript
