@@ -20,18 +20,11 @@ choco install tableau-desktop
     # Define the GitHub URL and the local file paths
     $SourceURL = "https://azlabstudentsstor.blob.core.windows.net/labartifacts/Tableau_Files.zip" 
     $TempPath = "C:\temp\Tableau_Files.zip" 
-    #$DesktopPath = "$env:USERPROFILE\Desktop\Tableau_Files.zip" # Replace this with your desired desktop file name
-    $Destination = 'C:\\users*\\Desktop\'
-    
+    $DesktopPath = "C:\users\Public\Desktop\Tableau_Files.zip" # Replace this with your desired desktop file name
+        
     # Download the zip file from the GitHub URL and save it to the temp path
     Invoke-WebRequest -Uri $SourceURL -OutFile $TempPath
     
     # Copy the zip file from the temp path to the desktop path
-    #Copy-Item -Path $TempPath -Destination $DesktopPath
-    #Get-ChildItem $Destination | ForEach-Object {Copy-Item -path $TempPath -Destination $_ -Force}
-
-    $StartupPath = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"
-    $CopyscriptURL = "https://azlabstudentsstor.blob.core.windows.net/labartifacts/Tableau_Files.bat" 
-    Invoke-WebRequest -Uri $CopyscriptURL -OutFile $StartupPath
-    Start-Process -FilePath "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\Tableau_Files.bat"
+    Copy-Item -Path $TempPath -Destination $DesktopPath
     #endofscript
