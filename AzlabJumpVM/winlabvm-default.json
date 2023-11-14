@@ -19,7 +19,7 @@
     },
     "classid": {
       "type": "string",  
-      "defaultValue": "",
+      "defaultValue": "defaultclass",
       }
     
   },
