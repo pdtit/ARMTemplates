@@ -39,3 +39,5 @@ $servicePort = 5432
 
 # install Visual Studio 2019 Build tools
 choco install visualstudio2019buildtools
+
+Restart-Computer
