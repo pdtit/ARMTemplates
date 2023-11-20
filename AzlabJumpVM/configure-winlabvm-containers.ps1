@@ -29,6 +29,9 @@ choco install vscode
 choco install kubernetes-helm
 choco install minikube
 
+#install Hyper-V on Windows Server
+Install-WindowsFeature -Name Hyper-V -ComputerName jumpvm -IncludeManagementTools 
+
 # install Windows Subsystem for Linux - WSL2
 wsl --install
 
