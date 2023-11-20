@@ -18,8 +18,17 @@ choco install podman-machine
 choco install podman-desktop
 choco install podman-cli
 
-$ docker desktop
+# docker desktop
 choco install docker-desktop
+
+# visual studio code with Kubernetes Extension
+choco install vscode
+choco install vscode-docker
+choco install vscode-kubernetes-tools
+
+# Kubernetes tools
+choco install kubernetes-helm
+choco install minikube
 
 #install Docker on Windows Server
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
