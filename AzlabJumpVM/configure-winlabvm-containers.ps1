@@ -23,12 +23,14 @@ choco install docker-desktop
 
 # visual studio code with Kubernetes Extension
 choco install vscode
-choco install vscode-docker
-choco install vscode-kubernetes-tools
+
 
 # Kubernetes tools
 choco install kubernetes-helm
 choco install minikube
+
+# install Windows Subsystem for Linux - WSL2
+wsl --install
 
 #install Docker on Windows Server
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
