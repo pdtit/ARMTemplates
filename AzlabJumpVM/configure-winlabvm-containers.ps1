@@ -30,10 +30,10 @@ choco install kubernetes-helm
 choco install minikube
 
 #install Hyper-V on Windows Server
-Install-WindowsFeature -Name Hyper-V -ComputerName jumpvm -IncludeManagementTools 
+#Install-WindowsFeature -Name Hyper-V -ComputerName jumpvm -IncludeManagementTools 
 
 # install Windows Subsystem for Linux - WSL2
-wsl --install
+#wsl --install
 
 #install Docker on Windows Server
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
