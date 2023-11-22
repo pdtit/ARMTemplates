@@ -25,7 +25,7 @@ choco install podman-cli
 choco install vscode
 
 # Kubernetes tools
-choco install kubernetes-helm
+#choco install kubernetes-helm **hangs setup
 
 #install Docker on Windows Server
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
