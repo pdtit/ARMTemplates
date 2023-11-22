@@ -24,20 +24,15 @@ choco install podman-cli
 # visual studio code with Kubernetes Extension
 choco install vscode
 
-#install Hyper-V on Windows Server
-Install-WindowsFeature -Name Hyper-V -ComputerName jumpvm -IncludeManagementTools 
-
-# install Windows Subsystem for Linux - WSL2
-#wsl --install
+# Kubernetes tools
+choco install kubernetes-helm
 
 #install Docker on Windows Server
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1
 .\install-docker-ce.ps1
 
-# Kubernetes tools
-choco install kubernetes-helm
-choco install minikube 
+#install Hyper-V on Windows Server
+Install-WindowsFeature -Name Hyper-V -ComputerName jumpvm -IncludeManagementTools -Restart
 
-Restart-Computer
 
