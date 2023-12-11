@@ -29,7 +29,7 @@
         }                
     },
     "variables": {
-        "ModulesURL": "[uri(parameters('_artifactsLocation'), concat('FastCar_HyperV/DSC/HyperV.zip', parameters('_artifactsLocationSasToken')))]",
+        "ModulesURL": "https://github.com/pdtit/ARMTemplates/blob/master/AzlabJumpVM/HyperV/DSC/HyperV.zip",
         "ConfigurationFunction": "HyperV.ps1\\HyperV"
     },
     "resources": [
