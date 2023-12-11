@@ -3,8 +3,8 @@ Configuration HyperV
    param
    (
         [String]$HyperVNATIP,
-        [String]$HyperVSubnetPrefix,
-        [String]$TimeZone
+        [String]$HyperVSubnetPrefix
+        
     )
  
     Import-DscResource -Module ComputerManagementDsc # Used for TimeZone
