@@ -194,7 +194,7 @@
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/HyperV/InstallHyperV.json",
+              "uri": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/HyperV/InstallHyper-V.json",
               "contentVersion": "1.0.0.0"
           },
           "parameters": {
