@@ -7,8 +7,8 @@ Configuration HyperV
         
     )
  
-    Import-DscResource -Module ComputerManagementDsc # Used for TimeZone
-    Import-DscResource -Module xStorage # Used for ISO
+    
+    Import-DscResource -Module xStorage 
 
     Node localhost
     {
@@ -62,10 +62,6 @@ Configuration HyperV
             DependsOn = '[xWaitForVolume]WaitForVVolume'
         }
 
-        TimeZone SetTimeZone
-        {
-            IsSingleInstance = 'Yes'
-            TimeZone         = $TimeZone
-        }
+        
      }
   }
