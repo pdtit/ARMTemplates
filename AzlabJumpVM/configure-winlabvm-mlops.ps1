@@ -28,4 +28,7 @@ choco install python36
 # install Visual Studio 2019 Build tools
 choco install visualstudio2019buildtools
 
+# install Azure CLI 2.54.0
+choco install azure-cli
+
 Restart-Computer
