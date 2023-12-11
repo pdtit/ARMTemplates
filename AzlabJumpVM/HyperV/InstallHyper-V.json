@@ -17,7 +17,7 @@
              
     },
     "variables": {
-        "ModulesURL": "[uri(parameters('_artifactsLocation'), concat('FastCar_HyperV/DSC/InstallHyperV.zip', parameters('_artifactsLocationSasToken')))]",
+        "ModulesURL": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/HyperV/DSC/InstallHyperV.zip",
         "ConfigurationFunction": "InstallHyperV.ps1\\InstallHyperV"
     },
     "resources": [
