@@ -13,19 +13,8 @@
           "metadata": {
             "description": "Region of Resources"
           }
-        },
-        "_artifactsLocation": {
-            "type": "string",
-            "metadata": {
-                "description": "The location of resources, such as templates and DSC modules, that the template depends on"
-            }
-        },
-        "_artifactsLocationSasToken": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Auto-generated token to access _artifactsLocation"
-            }
-        }                
+        }
+             
     },
     "variables": {
         "ModulesURL": "[uri(parameters('_artifactsLocation'), concat('FastCar_HyperV/DSC/InstallHyperV.zip', parameters('_artifactsLocationSasToken')))]",
