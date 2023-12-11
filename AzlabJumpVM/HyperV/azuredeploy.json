@@ -4,7 +4,7 @@
   "parameters": {
     "TimeZone": {
       "type": "string",
-      "defaultValue": "Pacific Standard Time",
+      "defaultValue": "India Standard Time",
       "allowedValues": [
         "Afghanistan Standard Time",
         "Alaskan Standard Time",
