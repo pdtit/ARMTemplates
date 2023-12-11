@@ -14,12 +14,7 @@
                 "description": "Computer IP Address"
             }
         },
-        "TimeZone": {
-            "type": "string",      
-            "metadata": {
-                "description": "Time Zone"
-            }
-        },
+        
         "AutoShutdownEnabled": {
             "type": "string",
           "metadata": {
