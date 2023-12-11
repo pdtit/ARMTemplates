@@ -233,9 +233,6 @@
               },                                                                                                            
               "HyperVSubnetPrefix": {
                 "value": "[variables('HyperVsubnetPrefix')]"
-              },
-              "TimeZone": {
-                "value": "[parameters('TimeZone')]"
               }                                                                                                                                                                                                                                                                                                                                                                                                                                                               
           }
       }
