@@ -29,7 +29,7 @@
         }                
     },
     "variables": {
-        "ModulesURL": "https://github.com/pdtit/ARMTemplates/blob/master/AzlabJumpVM/HyperV/DSC/HyperV.zip",
+        "ModulesURL": "https://github.com/pdtit/ARMTemplates/raw/master/AzlabJumpVM/HyperV/DSC/HyperV.zip",
         "ConfigurationFunction": "HyperV.ps1\\HyperV"
     },
     "resources": [
