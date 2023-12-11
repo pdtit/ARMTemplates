@@ -172,17 +172,21 @@
           "description": "Auto-Shutdown notification Email Example:  user@domain.com"
       }
     },                                                   
-    "adminUsername": {
-        "type": "string",
-        "metadata": {
-            "description": "The name of the Administrator of the new VM and Domain"
-        }
-    },      
-    "adminPassword": {
-        "type": "securestring",
+   "adminUsername": {
+      "type": "string",
+      "minLength": 1,
+      "defaultValue": "labadmin",
       "metadata": {
-        "description": "The password for the Administrator account of the new VM and Domain"
+        "description": "Username for the Virtual Machine."
       }
+    },      
+     "adminPassword": {
+      "type": "securestring",
+      "defaultValue": "P@55w.rdP@55w.rd",
+      "metadata": {
+        "description": "Password for the Virtual Machine."
+      }
+    }
     },
     "WindowsServerLicenseType": {
       "type": "string",
@@ -197,7 +201,7 @@
     },    
     "NamingConvention": {
       "type": "string",
-      "defaultValue": "mtt",
+      "defaultValue": "lab",
       "metadata": {
         "description": "Environment Naming Convention"
       }
@@ -262,10 +266,7 @@
     "HyperVsubnetPrefix": "[concat(parameters('HyperVSubnetID'),'.0/24')]",         
     "hvname": "[concat(parameters('NamingConvention'),'-hv-01')]",                      
     "hvIP": "[concat(parameters('vnet1ID'),'.1.',variables('hvlastoctet'))]", 
-    "hvlastoctet": "123",
-     "customScriptFolder": "./",
-    "customScriptUriScriptFileName": "customize-HyperV-host.ps1",
-    "customScriptUri": "https://attdemodeploystoacc.blob.core.windows.net/hypervsources/customize-HyperV-host.ps1"
+    "hvlastoctet": "123"
   
   },  
   "resources": [    
@@ -276,7 +277,7 @@
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri": "[uri(parameters('_artifactsLocation'), concat('FastCar_HyperV/linkedtemplates/vnet.json', parameters('_artifactsLocationSasToken')))]",
+              "uri": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/HyperV/vnet.json",
               "contentVersion": "1.0.0.0"
           },
           "parameters": {
@@ -317,7 +318,7 @@
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri": "[uri(parameters('_artifactsLocation'), concat('FastCar_HyperV/linkedtemplates/bastionhost.json', parameters('_artifactsLocationSasToken')))]",
+              "uri": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/HyperV/bastionhost.json",
               "contentVersion": "1.0.0.0"
           },
           "parameters": {
@@ -349,7 +350,7 @@
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri": "[uri(parameters('_artifactsLocation'), concat('FastCar_HyperV/linkedtemplates/1nic-2disk-vm-mi.json', parameters('_artifactsLocationSasToken')))]",
+              "uri": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/HyperV/1nic-2disk-vm-mi.json",
               "contentVersion": "1.0.0.0"
           },
           "parameters": {
@@ -420,7 +421,7 @@
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri": "[uri(parameters('_artifactsLocation'), concat('FastCar_HyperV/linkedtemplates/InstallHyperV.json', parameters('_artifactsLocationSasToken')))]",
+              "uri": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/HyperV/InstallHyperV.json",
               "contentVersion": "1.0.0.0"
           },
           "parameters": {
@@ -449,7 +450,7 @@
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri": "[uri(parameters('_artifactsLocation'), concat('FastCar_HyperV/linkedtemplates/HyperV.json', parameters('_artifactsLocationSasToken')))]",
+              "uri": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/HyperV/HyperV.json",
               "contentVersion": "1.0.0.0"
           },
           "parameters": {
