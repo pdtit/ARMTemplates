@@ -4,11 +4,10 @@ Configuration HyperV
    (
         [String]$HyperVNATIP,
         [String]$HyperVSubnetPrefix
-        
     )
  
-    
-    Import-DscResource -Module xStorage 
+    Import-DscResource -Module ComputerManagementDsc # Used for TimeZone
+    Import-DscResource -Module xStorage # Used for ISO
 
     Node localhost
     {
