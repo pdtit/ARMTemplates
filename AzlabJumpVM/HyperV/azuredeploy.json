@@ -203,13 +203,8 @@
               },
               "location": {
                   "value": "[resourceGroup().location]"
-              },                                          
-              "_artifactsLocation": {
-                "value": "[parameters('_artifactsLocation')]"
-              },                                                                                                            
-              "_artifactsLocationSasToken": {
-                "value": "[parameters('_artifactsLocationSasToken')]"
-              }                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+              }                                          
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
           }
       }
     },            
@@ -241,12 +236,6 @@
               },
               "TimeZone": {
                 "value": "[parameters('TimeZone')]"
-              },                            
-              "_artifactsLocation": {
-                "value": "[parameters('_artifactsLocation')]"
-              },                                                                                                            
-              "_artifactsLocationSasToken": {
-                "value": "[parameters('_artifactsLocationSasToken')]"
               }                                                                                                                                                                                                                                                                                                                                                                                                                                                               
           }
       }
