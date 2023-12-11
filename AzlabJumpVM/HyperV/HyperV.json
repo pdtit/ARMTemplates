@@ -20,12 +20,7 @@
                 "description": "HyperV VNet Prefix"
             }
         },
-        "TimeZone": {
-            "type": "string",      
-            "metadata": {
-                "description": "Time Zone"
-            }
-        },                                              
+                                                     
         "location": {
             "type": "string",
           "metadata": {
@@ -53,8 +48,8 @@
                     "ConfigurationFunction": "[variables('configurationFunction')]",
                         "Properties": {
                             "HyperVNATIP": "[parameters('HyperVNATIP')]",
-                            "HyperVSubnetPrefix": "[parameters('HyperVSubnetPrefix')]",
-                            "TimeZone": "[parameters('TimeZone')]"                            
+                            "HyperVSubnetPrefix": "[parameters('HyperVSubnetPrefix')]"
+                                                        
                         }
                 }
             }
