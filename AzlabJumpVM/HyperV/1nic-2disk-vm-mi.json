@@ -13,25 +13,6 @@
             "metadata": {
                 "description": "Computer IP Address"
             }
-        },
-        
-        "AutoShutdownEnabled": {
-            "type": "string",
-          "metadata": {
-            "description": "Enable or Disable Auto-Shutdown"
-          }
-        },                    
-        "AutoShutdownTime": {
-            "type": "string",
-          "metadata": {
-            "description": "Time to Shutdown VM"
-          }
-        },            
-        "AutoShutdownEmail": {
-            "type": "string",      
-            "metadata": {
-                "description": "Notification Email for Auto-Shutdown"
-            }
         },                                             
         "Publisher": {
             "type": "string",
