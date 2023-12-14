@@ -22,8 +22,8 @@ choco install git
 # install Anaconda Distribution (Python 3.x) 2023.9.0
 # choco install anaconda3
 
-# install Python 3.6
-choco install python36
+# install Python latest version
+choco install python
 
 # install Visual Studio 2019 Build tools
 choco install visualstudio2019buildtools
