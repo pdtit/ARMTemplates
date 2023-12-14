@@ -25,8 +25,9 @@ choco install git
 # install Python latest version
 choco install python
 
-# install Visual Studio 2019 Build tools
-choco install visualstudio2019buildtools
+# install Visual Studio 2022 Build tools
+choco install visualstudio2022buildtools
+choco install microsoft-visual-cpp-build-tools  #required for python 13.1 and pip install for az cli
 
 # install Azure CLI 2.54.0 through pip
 # choco install azure-cli
