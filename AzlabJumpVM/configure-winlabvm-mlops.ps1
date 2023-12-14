@@ -20,7 +20,7 @@ choco install vscode
 choco install git
 
 # install Anaconda Distribution (Python 3.x) 2023.9.0
-choco install anaconda3
+# choco install anaconda3
 
 # install Python 3.6
 choco install python36
@@ -28,7 +28,12 @@ choco install python36
 # install Visual Studio 2019 Build tools
 choco install visualstudio2019buildtools
 
-# install Azure CLI 2.54.0
-choco install azure-cli
+# install Azure CLI 2.54.0 through pip
+# choco install azure-cli
+pip install azure-cli
+az extension add --name ml -y
+
+
+
 
 Restart-Computer
