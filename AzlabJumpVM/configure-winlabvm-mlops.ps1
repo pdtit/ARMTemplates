@@ -33,7 +33,7 @@ cmd /c mklink "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_am
 
 # install Azure CLI 2.54.0 through pip
 # choco install azure-cli
-# pip install azure-cli
+pip install azure-cli
 
 # install Az CLI extension for Machine Learning
 az config set extension.use_dynamic_install=yes_without_prompt
