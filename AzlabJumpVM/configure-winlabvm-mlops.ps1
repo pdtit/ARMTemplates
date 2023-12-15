@@ -26,15 +26,20 @@ choco install git
 choco install python
 
 # install Visual Studio 2022 Build tools
-choco install visualstudio2022buildtools
-# choco install microsoft-visual-cpp-build-tools  #required for python 13.1 and pip install for az cli
+choco install visualstudio2022buildtools --package-parameters "--add Microsoft.VisualStudio.Component.VC.140 --passive --locale en-US --add Microsoft.VisualStudio.Component.Windows10SDK.$($PSVersionTable.BuildVersion.Build) --no-includeRecommended" -y --timeout 0
+
+cmd /c mklink "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_amd64\rc.exe" "C:\Program Files (x86)\Windows Kits\10\bin\$($PSVersionTable.BuildVersion.Major).$($PSVersionTable.BuildVersion.Minor).$($PSVersionTable.BuildVersion.Build).0\x64\rc.exe"
+cmd /c mklink "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_amd64\rcdll.dll" "C:\Program Files (x86)\Windows Kits\10\bin\$($PSVersionTable.BuildVersion.Major).$($PSVersionTable.BuildVersion.Minor).$($PSVersionTable.BuildVersion.Build).0\x64\rcdll.dll"
 
 # install Azure CLI 2.54.0 through pip
-choco install azure-cli
+# choco install azure-cli
 # pip install azure-cli
+
+# install Az CLI extension for Machine Learning
+az config set extension.use_dynamic_install=yes_without_prompt
 az extension add --name ml -y
 
 
 
 
-Restart-Computer
+# Restart-Computer
