@@ -22,8 +22,8 @@ choco install git
 # install Anaconda Distribution (Python 3.x) 2023.9.0
 # choco install anaconda3
 
-# install Python latest version
-choco install python
+# install Python latest version 3.11.6 because 3.12 breaks pip for azure
+choco install python --version=3.11.6
 
 # install Visual Studio 2022 Build tools
 choco install visualstudio2022buildtools --package-parameters "--add Microsoft.VisualStudio.Component.VC.140 --passive --locale en-US --add Microsoft.VisualStudio.Component.Windows10SDK.$($PSVersionTable.BuildVersion.Build) --no-includeRecommended" -y --timeout 0
