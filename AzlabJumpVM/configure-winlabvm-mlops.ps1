@@ -42,15 +42,7 @@ cd c:\Python311\Scripts  #navigate to python folder for pip command
 pip install azure-cli
 
 # install Az CLI extension for Machine Learning
+cmd /c "C:\Python311\Scripts\az extension add -n ml -y"
 
-start-process -FilePath "C:\Python311\Scripts\az.bat" -ArgumentList "config set extension.use_dynamic_install=yes_without_prompt"
-
-start-process -FilePath "C:\Python311\Scripts\az.bat" -ArgumentList "extension add --name ml -y"
-
-#az config set extension.use_dynamic_install=yes_without_prompt
 #az extension add --name ml -y
-
-
-
-
 # Restart-Computer
