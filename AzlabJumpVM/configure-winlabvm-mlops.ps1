@@ -36,15 +36,19 @@ Write-Host "Reload environment variables"
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 Write-Host "Reloaded environment variables"
 
-# install Azure CLI 2.54.0 through pip
+# install Azure CLI latest version through pip
 # choco install azure-cli
 cd c:\Python311\Scripts  #navigate to python folder for pip command
 pip install azure-cli
 
 # install Az CLI extension for Machine Learning
-cd c:\Python311\Scripts
-az config set extension.use_dynamic_install=yes_without_prompt
-az extension add --name ml -y
+
+start-process -FilePath "C:\Python311\Scripts\az.bat" -ArgumentList "config set extension.use_dynamic_install=yes_without_prompt"
+
+start-process -FilePath "C:\Python311\Scripts\az.bat" -ArgumentList "extension add --name ml -y"
+
+#az config set extension.use_dynamic_install=yes_without_prompt
+#az extension add --name ml -y
 
 
 
