@@ -20,7 +20,7 @@ choco install vscode
 choco install git
 
 # install Anaconda Distribution (Python 3.x) 2023.9.0
-# choco install anaconda3
+choco install anaconda3
 
 # install Python latest version 3.11.6 because 3.12 breaks pip for azure
 choco install python --version=3.11.6
