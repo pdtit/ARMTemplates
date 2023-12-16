@@ -20,7 +20,7 @@ choco install vscode
 choco install git
 
 # install Anaconda Distribution (Python 3.x) 2023.9.0
-choco install anaconda3
+# choco install anaconda3
 
 # install Python latest version 3.11.6 because 3.12 breaks pip for azure
 choco install python --version=3.11.6
@@ -31,8 +31,14 @@ choco install visualstudio2022buildtools --package-parameters "--add Microsoft.V
 cmd /c mklink "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_amd64\rc.exe" "C:\Program Files (x86)\Windows Kits\10\bin\$($PSVersionTable.BuildVersion.Major).$($PSVersionTable.BuildVersion.Minor).$($PSVersionTable.BuildVersion.Build).0\x64\rc.exe"
 cmd /c mklink "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\x86_amd64\rcdll.dll" "C:\Program Files (x86)\Windows Kits\10\bin\$($PSVersionTable.BuildVersion.Major).$($PSVersionTable.BuildVersion.Minor).$($PSVersionTable.BuildVersion.Build).0\x64\rcdll.dll"
 
+# reload env variables to pick up Python path changes
+Write-Host "Reload environment variables"
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+Write-Host "Reloaded environment variables"
+
 # install Azure CLI 2.54.0 through pip
 # choco install azure-cli
+cd c:\Python311\Scripts  #navigate to python folder for pip command
 pip install azure-cli
 
 # install Az CLI extension for Machine Learning
