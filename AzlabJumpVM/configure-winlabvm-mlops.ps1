@@ -20,7 +20,7 @@ choco install vscode
 choco install git
 
 # install Anaconda Distribution (Python 3.x) 2023.9.0
-# choco install anaconda3
+choco install anaconda3
 
 # install Python latest version 3.11.6 because 3.12 breaks pip for azure
 choco install python --version=3.11.6
@@ -41,8 +41,3 @@ Write-Host "Reloaded environment variables"
 cd c:\Python311\Scripts  #navigate to python folder for pip command
 pip install azure-cli
 
-# install Az CLI extension for Machine Learning
-cmd /c "C:\Python311\Scripts\az extension add -n ml -y"
-
-#az extension add --name ml -y
-# Restart-Computer
