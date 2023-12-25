@@ -42,3 +42,7 @@ Write-Host "Reloaded environment variables"
 cd c:\Python311\Scripts  #navigate to python folder for pip command
 pip install azure-cli
 pip install transformers transformers[tensorflow] openai diffusers datasets tensorflow
+
+# add Anaconda to PATH Env Variable
+[Environment]::SetEnvironmentVariable("PATH", $Env:PATH + ";C:\Tools\Anaconda3\", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("PATH", $Env:PATH + ";C:\Tools\Anaconda3\Scripts", [EnvironmentVariableTarget]::Machine)
