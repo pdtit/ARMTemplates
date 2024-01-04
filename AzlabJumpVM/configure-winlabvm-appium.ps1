@@ -19,4 +19,10 @@ choco install appium-desktop ##pdt might not be supported anymore, preferably us
 # install NodeJS as requirement for NPM
 choco install nodejs
 
+# add NodeJS to path Env Variable
+[Environment]::SetEnvironmentVariable("PATH", $Env:PATH + ";C:\Program Files\NodeJS\", [EnvironmentVariableTarget]::Machine)
+
+#switch to NodeJS for NPM runtime and install appium
+cd "C:\Program Files\NodeJS"
+npm i -g appium 
 
