@@ -12,3 +12,6 @@ choco feature enable -n allowGlobalConfirmation
 
 # install Google Chrome
 choco install googlechrome
+
+# install Appium Server and Inspector GUI
+choco install appium-desktop
