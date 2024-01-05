@@ -24,6 +24,7 @@ npm i -g npm
 
 # add NodeJS to path Env Variable
 [Environment]::SetEnvironmentVariable("PATH", $Env:PATH + ";C:\Program Files\NodeJS\", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("PATH", $Env:PATH + ";%USERPROFILE%\AppData\Roaming\npm", [EnvironmentVariableTarget]::Machine)
 
 #switch to NodeJS for NPM runtime and install appium
 cd "C:\Program Files\NodeJS"
