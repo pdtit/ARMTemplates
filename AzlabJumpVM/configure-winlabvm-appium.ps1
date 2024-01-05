@@ -14,7 +14,7 @@ choco feature enable -n allowGlobalConfirmation
 choco install googlechrome --pre=120.0.6099.110 --ignore-checksums -y #pdt fixing an issue on Jan4 with new msi package
 
 # install Appium Server and Inspector GUI
-choco install appium-desktop ##pdt might not be supported anymore, preferably use commandline
+# choco install appium-desktop ##pdt version not supported by Appium anymore, preferably use commandline
 
 # install NodeJS as requirement for NPM
 choco install nodejs
