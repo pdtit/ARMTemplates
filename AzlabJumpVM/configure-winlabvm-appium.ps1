@@ -16,6 +16,9 @@ choco install googlechrome --pre=120.0.6099.110 --ignore-checksums -y #pdt fixin
 # install Appium Server and Inspector GUI
 # choco install appium-desktop ##pdt version not supported by Appium anymore, preferably use commandline
 
+# install Oracle JDK
+choco install oraclejdk
+
 # install NodeJS as requirement for NPM
 choco install nodejs
 
@@ -39,8 +42,7 @@ npm i -g appium
 # install Android SDK
 choco install android-sdk
 
-# install Oracle JDK
-choco install oraclejdk
+
 
 # install Appium Android Driver
 appium driver install uiautomator2
