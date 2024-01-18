@@ -19,6 +19,12 @@ choco install googlechrome --pre=120.0.6099.110 --ignore-checksums -y #pdt fixin
 # install NodeJS as requirement for NPM
 choco install nodejs
 
+# install Maven
+choco install maven
+
+# install Eclipse
+choco install eclipse
+
 # install npm
 npm i -g npm 
 
@@ -29,4 +35,13 @@ npm i -g npm
 #switch to NodeJS for NPM runtime and install appium
 cd "C:\Program Files\NodeJS"
 npm i -g appium 
+
+# install Android SDK
+choco install android-sdk
+
+# install Oracle JDK
+choco install oraclejdk
+
+# install Appium Android Driver
+appium driver install uiautomator2
 
