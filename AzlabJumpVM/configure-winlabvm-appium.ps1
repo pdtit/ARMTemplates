@@ -17,13 +17,15 @@ choco install googlechrome --pre=120.0.6099.110 --ignore-checksums -y #pdt fixin
 # choco install appium-desktop ##pdt version not supported by Appium anymore, preferably use commandline
 
 # install Oracle JDK
-choco install oraclejdk
+# choco install oraclejdk
+choco install openjdk11
 
 # install NodeJS as requirement for NPM
 choco install nodejs
 
 # install Maven
 choco install maven
+[Environment]::SetEnvironmentVariable("PATH", $Env:PATH + ";C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.6\bin", [EnvironmentVariableTarget]::Machine)
 
 # install Eclipse
 choco install eclipse
@@ -38,6 +40,9 @@ npm i -g npm
 #switch to NodeJS for NPM runtime and install appium
 cd "C:\Program Files\NodeJS"
 npm i -g appium 
+
+# Install Android Studio
+choco install androidstudio
 
 # install Android SDK
 choco install android-sdk
