@@ -62,6 +62,7 @@
     "SQLVMSubnetRef": "[concat(variables('SQLVMVnetID'), '/subnets/', variables('AzTrainingVNetSubnet2Name'))]",
     "SQLVMStorageAccountContainerName": "vhds",
     "SQLVMNicName": "[concat(parameters('SQLVMName'), 'NetworkInterface')]",
+    "SQLVMSKU": "sqldev-gen2",
     "SQLDISK1": "[concat('http://',variables('vmstorageName'),'.blob.core.windows.net/','vhds','/','dataDisk1.vhd')]",
     "SQLDISK2": "[concat('http://',variables('vmstorageName'),'.blob.core.windows.net/','vhds','/','dataDisk2.vhd')]",
     "SQLDSCArchiveFolder": "DSC",
@@ -187,7 +188,7 @@
             "publisher": "[variables('SQLVMImagePublisher')]",
             "offer": "[variables('SQLVMImageOffer')]",
             "sku": "[parameters('SQLVMSKU')]",
-            "version": "16.0.1000.6"
+            "version": "latest"
           },
           "osDisk": {
             "name": "SQLVMOSDisk",
