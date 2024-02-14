@@ -48,7 +48,7 @@
     "SQLVMSubnetRef": "[concat(variables('SQLVMVnetID'), '/subnets/', variables('AzTrainingVNetSubnet2Name'))]",
     "SQLVMStorageAccountContainerName": "vhds",
     "SQLVMNicName": "[concat(variables('SQLVMName'), 'NetworkInterface')]",
-    "SQLVMSKU": "web",
+    "SQLVMSKU": "web-gen2",
     "SQLDISK1": "[concat('http://',variables('vmstorageName'),'.blob.core.windows.net/','vhds','/','dataDisk1.vhd')]",
     "SQLDISK2": "[concat('http://',variables('vmstorageName'),'.blob.core.windows.net/','vhds','/','dataDisk2.vhd')]",
     "SQLDSCArchiveFolder": "DSC",
