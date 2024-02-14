@@ -46,7 +46,7 @@
     "SQLVMVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'AzTrainingVNet')]",
     "SQLVMSubnetRef": "[concat(variables('SQLVMVnetID'), '/subnets/', variables('AzTrainingVNetSubnet2Name'))]",
     "SQLVMStorageAccountContainerName": "vhds",
-    "SQLVMNicName": "[concat(parameters('SQLVMName'), 'NetworkInterface')]",
+    "SQLVMNicName": "[concat(variables('SQLVMName'), 'NetworkInterface')]",
     "SQLVMSKU": "sqldev-gen2",
     "SQLDISK1": "[concat('http://',variables('vmstorageName'),'.blob.core.windows.net/','vhds','/','dataDisk1.vhd')]",
     "SQLDISK2": "[concat('http://',variables('vmstorageName'),'.blob.core.windows.net/','vhds','/','dataDisk2.vhd')]",
@@ -148,7 +148,7 @@
       }
     },
     {
-      "name": "[parameters('SQLVMName')]",
+      "name": "[variables('SQLVMName')]",
       "type": "Microsoft.Compute/virtualMachines",
       "location": "[resourceGroup().location]",
       "apiVersion": "2015-06-15",
@@ -217,7 +217,7 @@
           "location": "[resourceGroup().location]",
           "apiVersion": "2016-03-30",
           "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines', parameters('SQLVMName'))]"
+            "[resourceId('Microsoft.Compute/virtualMachines', variables('SQLVMName'))]"
           ],
           "tags": {
             "displayName": "SQLDSC"
@@ -234,7 +234,7 @@
                 "function": "Main"
               },
               "configurationArguments": {
-                "nodeName": "[parameters('SQLVMName')]"
+                "nodeName": "[variables('SQLVMName')]"
               }
             },
             "protectedSettings": {
