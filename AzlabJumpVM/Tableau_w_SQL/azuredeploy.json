@@ -144,7 +144,7 @@
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
-          "domainNameLabel": "[parameters('SQLPublicIPDnsName')]"
+          "domainNameLabel": "[variables('SQLPublicIPDnsName')]"
         }
       }
     },
