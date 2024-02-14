@@ -34,14 +34,6 @@
       "metadata": {
         "description": "Password for the Virtual Machine."
       }
-    },
-    "SQLVMSKU": {
-   "type": "string",
-   "defaultValue": "Web",
-   "allowedValues": [
-      "Web",
-      "Standard"
-    ]
     }
   },
 
@@ -56,6 +48,7 @@
     "SQLPublicIPName": "[concat('sqlvmpip', uniqueString(resourceGroup().id))]",
     "SQLVMImagePublisher": "MicrosoftSQLServer",
     "SQLVMImageOffer": "sql2022-ws2022",
+    "SQLVMName": "tableausqlvm",
     "SQLVMOSDiskName": "SQLVMOSDisk",
     "SQLVMVmSize": "Standard_DS4_v2",
     "SQLVMVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'AzTrainingVNet')]",
@@ -179,7 +172,7 @@
           "vmSize": "[variables('SQLVMVmSize')]"
         },
         "osProfile": {
-          "computerName": "[parameters('SQLVMName')]",
+          "computerName": "[variables('SQLVMName')]",
           "adminUsername": "[parameters('SQLVMAdminUsername')]",
           "adminPassword": "[parameters('SQLVMAdminPassword')]"
         },
