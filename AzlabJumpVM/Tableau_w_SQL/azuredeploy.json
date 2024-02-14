@@ -271,8 +271,8 @@
             "autoUpgradeMinorVersion": true,
             "settings": {
               "configuration": {
-                "url": "[concat(parameters('_artifactsLocation'), '/', variables('SQLDSCArchiveFolder'), '/', variables('SQLDSCArchiveFileName'))]",
-                "script": "SQLDSC.ps1",
+                "url": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/Tableau_w_SQL/DSC/sqlvm.ps1",
+                "script": "sqlvm.ps1",
                 "function": "Main"
               },
               "configurationArguments": {
