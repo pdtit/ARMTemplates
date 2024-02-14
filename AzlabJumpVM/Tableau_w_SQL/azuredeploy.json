@@ -172,7 +172,7 @@
           "imageReference": {
             "publisher": "[variables('SQLVMImagePublisher')]",
             "offer": "[variables('SQLVMImageOffer')]",
-            "sku": "[parameters('SQLVMSKU')]",
+            "sku": "[variables('SQLVMSKU')]",
             "version": "latest"
           },
           "osDisk": {
