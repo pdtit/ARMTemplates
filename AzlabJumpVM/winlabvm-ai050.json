@@ -40,7 +40,7 @@
     "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
     "vhdStorageAccountName": "[concat('vhdstorage', uniqueString(resourceGroup().id))]",
     "scriptFolder": ".",
-    "scriptFileName": "configure-winlabvm-tableau.ps1",
+    "scriptFileName": "configure-winlabvm-ai050.ps1",
     "fileToBeCopied": "ExtensionLog.txt"
     
   },
