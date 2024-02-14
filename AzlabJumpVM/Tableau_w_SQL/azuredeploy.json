@@ -34,7 +34,6 @@
       "metadata": {
         "description": "Password for the Virtual Machine."
       }
-    }
     },
     "SQLVMSKU": {
    "type": "string",
