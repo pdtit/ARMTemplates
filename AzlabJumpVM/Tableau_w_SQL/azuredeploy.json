@@ -11,7 +11,7 @@
         "Standard_RAGRS",
         "Premium_LRS"
       ]
-    }
+    },
     "SQLVMName": {
       "type": "string",
       "minLength": 1,
