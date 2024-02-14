@@ -12,14 +12,6 @@
         "Premium_LRS"
       ]
     },
-    "SQLVMName": {
-      "type": "string",
-      "minLength": 1,
-      "value": "tableausqlvm",
-      "metadata": {
-        "description": "name for the Virtual Machine."
-      }
-    },
     "SQLVMAdminUserName": {
         "type": "string",
       "minLength": 1,
