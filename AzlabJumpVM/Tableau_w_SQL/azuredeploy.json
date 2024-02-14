@@ -11,55 +11,26 @@
         "Standard_RAGRS",
         "Premium_LRS"
       ]
-    },
-    "WebVMName": {
-      "type": "string",
-      "minLength": 1
-    },
-    "WebVMAdminUserName": {
-      "type": "string",
-      "minLength": 1
-    },
-    "WebVMAdminPassword": {
-      "type": "securestring"
-    },
-    "WebVMWindowsOSVersion": {
-      "type": "string",
-      "defaultValue": "2022-Datacenter",
-      "allowedValues": [
-        "2008-R2-SP1",
-        "2012-Datacenter",
-        "2012-R2-Datacenter",
-        "2019-Datacenter",
-        "2022-Datacenter"
-      ]
-    },
-    "WebPublicIPDnsName": {
-      "type": "string",
-      "minLength": 1
-    },
-    "_artifactsLocation": {
-      "type": "string",
-      "metadata": {
-        "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
-      }
-    },
-    "_artifactsLocationSasToken": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Auto-generated token to access _artifactsLocation"
-      }
-    },
+    }
     "SQLVMName": {
       "type": "string",
       "minLength": 1
     },
     "SQLVMAdminUserName": {
-      "type": "string",
-      "minLength": 1
+        "type": "string",
+      "minLength": 1,
+      "defaultValue": "labadmin",
+      "metadata": {
+        "description": "Username for the Virtual Machine."
+      }
     },
     "SQLVMAdminPassword": {
-      "type": "securestring"
+      "type": "securestring",
+      "defaultValue": "P@55w.rdP@55w.rd",
+      "metadata": {
+        "description": "Password for the Virtual Machine."
+      }
+    }
     },
     "SQLVMSKU": {
    "type": "string",
@@ -68,9 +39,7 @@
       "Web",
       "Standard"
     ]
-}
-
-
+    }
   },
 
 
