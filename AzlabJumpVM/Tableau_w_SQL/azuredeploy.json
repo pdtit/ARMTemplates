@@ -38,6 +38,7 @@
     "AzTrainingVNetSubnet2Prefix": "10.0.1.0/24",
     "vmstorageName": "[concat('vmstorage', uniqueString(resourceGroup().id))]",
     "SQLPublicIPName": "[concat('sqlvmpip', uniqueString(resourceGroup().id))]",
+    "SQLPublicIPDNSName": "[concat('sqlvmpipdomain', uniqueString(resourceGroup().id))]",
     "SQLVMImagePublisher": "MicrosoftSQLServer",
     "SQLVMImageOffer": "sql2022-ws2022",
     "SQLVMName": "tableausqlvm",
