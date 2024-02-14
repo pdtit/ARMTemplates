@@ -68,12 +68,12 @@ Node $nodeName
 		Restart-Service -Name "MSSQLSERVER" -Force
 		# Re-enable the sa account and set a new password to enable login
 		Invoke-Sqlcmd -ServerInstance Localhost -Database "master" -Query "ALTER LOGIN sa ENABLE"
-		Invoke-Sqlcmd -ServerInstance Localhost -Database "master" -Query "ALTER LOGIN sa WITH PASSWORD = 'L@BadminPa55w.rd'"
+		Invoke-Sqlcmd -ServerInstance Localhost -Database "master" -Query "ALTER LOGIN sa WITH PASSWORD = 'P@55w.rdP@55w.rd'"
 
 		# Download the Microsoft.eShopOnWeb.CatalogDb database backup 
-		$dbsource = "https://attdemodeploystoacc.blob.core.windows.net/deployartifacts/Microsoft.eShopOnWeb.CatalogDb.bak"
-		$dbbackupfile = "C:\SQLDATA\Microsoft.eShopOnWeb.CatalogDb.bak"
-		$dbdestination = "C:\SQLDATA\Microsoft.eShopOnWeb.CatalogDb.bak"
+		$dbsource = "https://attdemodeploystoacc.blob.core.windows.net/deployartifacts/AdventureWorks2022.bak"
+		$dbbackupfile = "C:\SQLDATA\AdventureWorks2022.bak"
+		$dbdestination = "C:\SQLDATA\AdventureWorks2022.bak"
 
 		Invoke-WebRequest $dbsource -OutFile $dbdestination -UseBasicParsing
 
@@ -84,16 +84,16 @@ Node $nodeName
 		#$myarr = data and logfile is stored as an array, which is picked up by the restore-sqldatabase PowerSHell cmd
 
 		#try without relocate 
-		#$RelocateData = New-Object 'Microsoft.SqlServer.Management.Smo.RelocateFile, Microsoft.SqlServer.SmoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91' -ArgumentList "Microsoft.eShopOnWeb.CatalogDb2014_Data", "F:\Data\Microsoft.eShopOnWeb.CatalogDbDB.mdf"
-		#$RelocateLog = New-Object 'Microsoft.SqlServer.Management.Smo.RelocateFile, Microsoft.SqlServer.SmoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91' -ArgumentList "Microsoft.eShopOnWeb.CatalogDb2014_Log", "F:\Logs\Microsoft.eShopOnWeb.CatalogDbDB.ldf"
+		#$RelocateData = New-Object 'Microsoft.SqlServer.Management.Smo.RelocateFile, Microsoft.SqlServer.SmoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91' -ArgumentList "AdventureWorks2022", "F:\Data\AdventureWorks2022.mdf"
+		#$RelocateLog = New-Object 'Microsoft.SqlServer.Management.Smo.RelocateFile, Microsoft.SqlServer.SmoExtended, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91' -ArgumentList "AdventureWorks2022_Log", "F:\Logs\AdventureWorks2022.ldf"
 		#$file = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile($RelocateData,$RelocateLog) 
 		#$myarr=@($RelocateData,$RelocateLog)
 
 		#run the actual database restore
 		#original cmdlet Restore-SqlDatabase -ServerInstance Localhost -Database "Microsoft.eShopOnWeb.CatalogDb" -BackupFile $dbbackupfile -RelocateFile $myarr
 		
-		#Restore-SqlDatabase -ServerInstance Localhost -Database "Microsoft.eShopOnWeb.CatalogDb" -RestoreAction Database -BackupFile $dbbackupfile 
-		Restore-SqlDatabase -ServerInstance Localhost -Database "Microsoft.eShopOnWeb.CatalogDb" -BackupFile $dbbackupfile -AutoRelocateFile -PassThru
+		#Restore-SqlDatabase -ServerInstance Localhost -Database "AdventureWorks2022" -RestoreAction Database -BackupFile $dbbackupfile 
+		Restore-SqlDatabase -ServerInstance Localhost -Database "AdventureWorks2022" -BackupFile $dbbackupfile -AutoRelocateFile -PassThru
 
 
 		#allow connection to SQL Instance
