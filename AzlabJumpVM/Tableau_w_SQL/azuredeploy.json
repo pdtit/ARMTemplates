@@ -15,7 +15,7 @@
     "SQLVMName": {
       "type": "string",
       "minLength": 1,
-      "defaultvalue": "tableauvm",
+      "value": "tableausqlvm",
       "metadata": {
         "description": "name for the Virtual Machine."
       }
