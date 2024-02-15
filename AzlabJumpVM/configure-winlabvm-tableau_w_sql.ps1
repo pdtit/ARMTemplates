@@ -16,6 +16,9 @@ choco install googlechrome --pre=120.0.6099.110 --ignore-checksums -y #pdt fixin
 # install Tableau 2023.2.2
 choco install tableau-desktop
 
+# install Office 365
+choco install office365business
+
 # copy tableau user files to desktop
     # Define the GitHub URL and the local file paths
     $SourceURL = "https://azlabstudentsstor.blob.core.windows.net/labartifacts/Tableau_Files.zip" 
