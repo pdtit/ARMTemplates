@@ -35,11 +35,11 @@ choco install office365business
 ## restoring SQL Server AdventureWorks database
         $logs = "G:\SQLLog"
 		$data = "F:\SQLData"
-		$backups = "F:\SQLTemp" 
+		$backups = "D:\SQLTemp" 
 		
 		# Setup the data, backup and log directories as well as mixed mode authentication
 		#Import-Module "sqlps" -DisableNameChecking
-		Install-Module -Name SqlServer -RequiredVersion 21.1.18102 -AllowClobber -Force
+		Install-Module -Name SqlServer -AllowClobber -Force
 		[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo")
 		$sqlesq = new-object ('Microsoft.SqlServer.Management.Smo.Server') Localhost
 		$sqlesq.Settings.LoginMode = [Microsoft.SqlServer.Management.Smo.ServerLoginMode]::Mixed
