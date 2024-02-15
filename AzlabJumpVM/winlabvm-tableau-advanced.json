@@ -343,7 +343,8 @@
             "vTpmEnabled": "[parameters('vTPM')]"
           },
           "securityType": "TrustedLaunch"
-        },
+        }
+      },
         "resources": [
         
         {
