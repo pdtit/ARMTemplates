@@ -1,3 +1,5 @@
+Start-Transcript -Path "C:\Temp\CustomScript.log" -Append
+
 # Install Chocolatey
 
 # Set Chocolatey version to 1.4.0 to avoid installing .NET 4.8 Framework (which the newer 2.0 needs, but requires reboot, and blocks CustomScriptExtension
@@ -83,4 +85,4 @@ choco install office365business
 		#allow connection to SQL Instance
 		New-NetFirewallRule -DisplayName "SQL Server" -Direction Inbound -Protocol TCP -LocalPort 1433 -Action allow 
 		
-	
+Stop-Transcript
