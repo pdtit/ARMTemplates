@@ -213,36 +213,25 @@
       "resources": [
         
         {
-          "name": "Microsoft.Powershell.DSC",
-          "type": "extensions",
+          "apiVersion": "2018-06-01",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "name": "[concat(variables('vmName'),'/', 'VMConfig')]",
           "location": "[resourceGroup().location]",
-          "apiVersion": "2016-03-30",
           "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines', variables('SQLVMName'))]"
+              "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
           ],
-          "tags": {
-            "displayName": "SQLDSC"
-          },
           "properties": {
-            "publisher": "Microsoft.Powershell",
-            "type": "DSC",
-            "typeHandlerVersion": "2.9",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-              "configuration": {
-                "url": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/Tableau_w_SQL/DSC/sqlvm.ps1",
-                "script": "sqlvm.ps1",
-                "function": "Main"
-              },
-              "configurationArguments": {
-                "nodeName": "[variables('SQLVMName')]"
+              "publisher": "Microsoft.Compute",
+              "type": "CustomScriptExtension",
+              "typeHandlerVersion": "1.7",
+              "autoUpgradeMinorVersion":true,
+              "settings": {
+                  "fileUris": [
+                     "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/configure-winlabvm-tableau_w_sql.ps1"
+                  ],
+                  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-winlabvm-tableau_w_sql.ps1"
               }
-            },
-            "protectedSettings": {
-              "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
-            }
           }
-        }
 
 
       ]
