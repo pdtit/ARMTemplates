@@ -367,6 +367,34 @@
                   "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-winlabvm-tableau_w_sql.ps1"
               }
           }
+        },
+        {
+          "name": "Microsoft.Powershell.DSC",
+          "type": "extensions",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2016-03-30",
+          "dependsOn": [
+            "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"
+          ],
+          "tags": {
+            "displayName": "SQLDSC"
+          },
+          "properties": {
+            "publisher": "Microsoft.Powershell",
+            "type": "DSC",
+            "typeHandlerVersion": "2.9",
+            "autoUpgradeMinorVersion": true,
+            "settings": {
+              "configuration": {
+                "url": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/Tableau_w_SQL/DSC/sqlvm.zip",
+                "script": "sqlvm.ps1",
+                "function": "Main"
+              },
+              "configurationArguments": {
+                "nodeName": "[parameters('virtualMachineName')]"
+              }
+            }
+          }
         }
       ],
 	
