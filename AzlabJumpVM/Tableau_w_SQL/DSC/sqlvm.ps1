@@ -54,4 +54,4 @@ Node $nodeName
      GetScript = {@{Result = "ConfigureSql"}}
 	}
   }
-
+}
