@@ -40,7 +40,7 @@ Stop-Service -Name MSSQLSERVER
 
 #start a new SQL Server instance for the restore
 	$sqlJob = Start-Job -Name Sql -ScriptBlock {
-	  & 'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\Binn\sqlservr.exe' -m
+	  & 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\Binn\sqlservr.exe' -m
 	}
 
 	try {
