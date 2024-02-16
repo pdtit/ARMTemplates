@@ -393,9 +393,6 @@
               "configurationArguments": {
                 "nodeName": "[parameters('virtualMachineName')]"
               }
-            },
-            "protectedSettings": {
-              "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
             }
           }
         }
