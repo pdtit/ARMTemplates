@@ -15,7 +15,7 @@ Node $nodeName
         }
         SetScript ={
 
-		$logs = "G:\SQLLLog"
+		$logs = "G:\SQLLog"
 		$data = "F:\SQLData"
 		$backups = "D:\SQLTemp" 
 		
