@@ -41,6 +41,7 @@ choco install tableau-desktop
 		
 		# Setup the data, backup and log directories as well as mixed mode authentication
 		#Import-Module "sqlps" -DisableNameChecking
+  		Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 		Install-Module -Name SqlServer -AllowClobber -Force
 		[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo")
 		$sqlesq = new-object ('Microsoft.SqlServer.Management.Smo.Server') Localhost
