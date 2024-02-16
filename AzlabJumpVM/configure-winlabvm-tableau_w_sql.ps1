@@ -53,8 +53,8 @@ choco install tableau-desktop
 		# Restart the SQL Server service
 		Restart-Service -Name "MSSQLSERVER" -Force
 		# Re-enable the sa account and set a new password to enable login
-		Invoke-Sqlcmd -ServerInstance Localhost -Database "master" -Query "ALTER LOGIN sa ENABLE"
-		Invoke-Sqlcmd -ServerInstance Localhost -Database "master" -Query "ALTER LOGIN sa WITH PASSWORD = 'P@55w.rdP@55w.rd'"
+		Invoke-Sqlcmd -ServerInstance Localhost -Database "master" -Query "ALTER LOGIN sa ENABLE" -TrustServerCertificate
+		Invoke-Sqlcmd -ServerInstance Localhost -Database "master" -Query "ALTER LOGIN sa WITH PASSWORD = 'P@55w.rdP@55w.rd'" -TrustServerCertificate
 
 		# Download the Microsoft.eShopOnWeb.CatalogDb database backup 
 		$dbsource = "https://azlabstudentsstor.blob.core.windows.net/labartifacts/AdventureWorks2022.bak"
