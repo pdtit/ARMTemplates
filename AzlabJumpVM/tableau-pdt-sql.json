@@ -386,7 +386,7 @@
             "autoUpgradeMinorVersion": true,
             "settings": {
               "configuration": {
-                "url": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/Tableau_w_SQL/DSC/sqlvm.ps1",
+                "url": "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/Tableau_w_SQL/DSC/sqlvm.zip",
                 "script": "sqlvm.ps1",
                 "function": "Main"
               },
