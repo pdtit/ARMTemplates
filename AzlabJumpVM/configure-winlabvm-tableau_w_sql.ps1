@@ -49,15 +49,18 @@ Stop-Service -Name MSSQLSERVER
 	
 	    # Connect to the local SQL instance using SMO
 	    [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO') | out-null
-	    $s = new-object('Microsoft.SqlServer.Management.Smo.Server') $Server
+	    $s = new-object('Microsoft.SqlServer.Management.Smo.Server') Localhost
 	    [string]$nm = $s.Name
 	    [string]$mode = $s.Settings.LoginMode
 	
 	    # Change to Mixed Mode
-	    $s.Settings.LoginMode = [Microsoft.SqlServer.Management.SMO.ServerLoginMode]::Mixed
+	    $s.Settings.LoginMode = [Microsoft.SqlServer.Management.SMO.ServerLoginMode]::Mixedy
+     			$s.Settings.DefaultFile = $data
+			$s.Settings.DefaultLog = $logs
+			$s.Settings.BackupDirectory = $backups
 	    $s.Alter()
 	
-	    $logs = "G:\SQLLog"
+	    		$logs = "G:\SQLLog"
 			$data = "F:\SQLData"
 			$backups = "D:\SQLTemp" 
 			
@@ -66,13 +69,13 @@ Stop-Service -Name MSSQLSERVER
 	  		Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 			Install-Module -Name SqlServer -AllowClobber -Force
 			[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo")
-			$sqlesq = new-object ('Microsoft.SqlServer.Management.Smo.Server') Localhost
+			#$sqlesq = new-object ('Microsoft.SqlServer.Management.Smo.Server') Localhost
 			#$sqlesq.Settings.LoginMode = [Microsoft.SqlServer.Management.Smo.ServerLoginMode]::Mixed
 	  		
-			$sqlesq.Settings.DefaultFile = $data
-			$sqlesq.Settings.DefaultLog = $logs
-			$sqlesq.Settings.BackupDirectory = $backups
-			$sqlesq.Alter() 
+			#$sqlesq.Settings.DefaultFile = $data
+			#$sqlesq.Settings.DefaultLog = $logs
+			#$sqlesq.Settings.BackupDirectory = $backups
+			#$sqlesq.Alter() 
 	
 			# Restart the SQL Server service
 			Restart-Service -Name "MSSQLSERVER" -Force
