@@ -54,7 +54,7 @@ Stop-Service -Name MSSQLSERVER
 	    [string]$mode = $s.Settings.LoginMode
 	
 	    # Change to Mixed Mode
-	    $s.Settings.LoginMode = [Microsoft.SqlServer.Management.SMO.ServerLoginMode]::Mixedy
+	    $s.Settings.LoginMode = [Microsoft.SqlServer.Management.SMO.ServerLoginMode]::Mixed
      			$s.Settings.DefaultFile = $data
 			$s.Settings.DefaultLog = $logs
 			$s.Settings.BackupDirectory = $backups
