@@ -51,7 +51,7 @@ Node $nodeName
 		New-NetFirewallRule -DisplayName "SQL Server" -Direction Inbound -Protocol TCP -LocalPort 1433 -Action allow 
 		}
 		
-     GetScript = {@{Result = "ConfigureSql"}}
+     #GetScript = {@{Result = "ConfigureSql"}}
 	}
   }
 }
