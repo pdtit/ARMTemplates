@@ -362,9 +362,9 @@
               "autoUpgradeMinorVersion":true,
               "settings": {
                   "fileUris": [
-                     "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/configure-winlabvm-tableau_w_sql.ps1"
+                     "https://raw.githubusercontent.com/pdtit/ARMTemplates/master/AzlabJumpVM/tableau-pdt-sql.ps1"
                   ],
-                  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File configure-winlabvm-tableau_w_sql.ps1"
+                  "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File tableau-pdt-sql.ps1"
               }
           }
         },
