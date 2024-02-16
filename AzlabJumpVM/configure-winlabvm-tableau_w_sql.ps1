@@ -115,5 +115,5 @@ finally {
 
 # Start MSSQLSERVER process again
 Start-Service -Name MSSQLSERVER        	
-		
+}		
 Stop-Transcript
