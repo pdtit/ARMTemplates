@@ -35,9 +35,8 @@ choco install tableau-desktop
     #endofscript
 
 ## restoring SQL Server AdventureWorks database
-# MSSQLSERVER should be stopped first
-#Stop-Service -Name MSSQLFDLauncher
-#Stop-Service -Name MSSQLSERVER
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+Install-Module -Name SqlServer -AllowClobber -Force
 
 #start a new SQL Server instance for the restore
 	$sqlJob = Start-Job -Name Sql -ScriptBlock {
@@ -70,8 +69,7 @@ choco install tableau-desktop
 			
 			# Setup the data, backup and log directories as well as mixed mode authentication
 			#Import-Module "sqlps" -DisableNameChecking
-	  		#Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
-			#Install-Module -Name SqlServer -AllowClobber -Force
+	  		
 			[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo")
 			#$sqlesq = new-object ('Microsoft.SqlServer.Management.Smo.Server') Localhost
 			#$sqlesq.Settings.LoginMode = [Microsoft.SqlServer.Management.Smo.ServerLoginMode]::Mixed
