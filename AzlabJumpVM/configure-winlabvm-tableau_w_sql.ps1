@@ -36,8 +36,8 @@ choco install tableau-desktop
 
 ## restoring SQL Server AdventureWorks database
 # MSSQLSERVER should be stopped first
-Stop-Service -Name MSSQLFDLauncher
-Stop-Service -Name MSSQLSERVER
+#Stop-Service -Name MSSQLFDLauncher
+#Stop-Service -Name MSSQLSERVER
 
 #start a new SQL Server instance for the restore
 	$sqlJob = Start-Job -Name Sql -ScriptBlock {
@@ -50,10 +50,13 @@ Stop-Service -Name MSSQLSERVER
 	
 	    # Connect to the local SQL instance using SMO
 	    [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO') | out-null
-	    $s = new-object('Microsoft.SqlServer.Management.Smo.Server') Localhost
+	    $s = new-object('Microsoft.SqlServer.Management.Smo.Server') LocalHost
 	    [string]$nm = $s.Name
 	    [string]$mode = $s.Settings.LoginMode
 	
+        Write-Host 'Smo Server Object'
+	    $s
+
 	    # Change to Mixed Mode
 	    $s.Settings.LoginMode = [Microsoft.SqlServer.Management.SMO.ServerLoginMode]::Mixed
      			$s.Settings.DefaultFile = $data
@@ -79,7 +82,7 @@ Stop-Service -Name MSSQLSERVER
 			#$sqlesq.Alter() 
 	
 			# Restart the SQL Server service
-			Restart-Service -Name "MSSQLSERVER" -Force
+			#Restart-Service -Name "MSSQLSERVER" -Force
 			# Re-enable the sa account and set a new password to enable login
 			#Invoke-Sqlcmd -ServerInstance Localhost -Database "master" -Query "ALTER LOGIN sa ENABLE" -TrustServerCertificate
 			#Invoke-Sqlcmd -ServerInstance Localhost -Database "master" -Query "ALTER LOGIN sa WITH PASSWORD = 'P@55w.rdP@55w.rd'" -TrustServerCertificate
@@ -89,7 +92,7 @@ Stop-Service -Name MSSQLSERVER
 			$dbbackupfile = "F:\SQLDATA\AdventureWorks2022.bak"
 			$dbdestination = "F:\SQLDATA\AdventureWorks2022.bak"
 	
-			Invoke-WebRequest $dbsource -OutFile $dbdestination -UseBasicParsing
+			#Invoke-WebRequest $dbsource -OutFile $dbdestination -UseBasicParsing
 	
 			# Define parameters for the actual restore
 			#RelocateData = sets the location for the database
@@ -107,7 +110,7 @@ Stop-Service -Name MSSQLSERVER
 			#original cmdlet Restore-SqlDatabase -ServerInstance Localhost -Database "Microsoft.eShopOnWeb.CatalogDb" -BackupFile $dbbackupfile -RelocateFile $myarr
 			
 			#Restore-SqlDatabase -ServerInstance Localhost -Database "Microsoft.eShopOnWeb.CatalogDb" -RestoreAction Database -BackupFile $dbbackupfile 
-			Restore-SqlDatabase -ServerInstance Localhost -Database "AdventureWorks2022" -BackupFile $dbbackupfile -AutoRelocateFile -PassThru
+			Restore-SqlDatabase -ServerInstance LocalHost -Database "AdventureWorks2022" -BackupFile $dbbackupfile -AutoRelocateFile -PassThru
 	
 	
 			#allow connection to SQL Instance
@@ -118,6 +121,6 @@ finally {
     $sqlJob.StopJob()
 
 # Start MSSQLSERVER process again
-Start-Service -Name MSSQLSERVER        	
+#Start-Service -Name MSSQLSERVER        	
 }		
 Stop-Transcript
