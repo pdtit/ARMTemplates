@@ -21,6 +21,9 @@ choco install tableau-desktop
 # install Office 365
 choco install office365business
 
+# install Adobe Reader
+choco install adobereader
+
 # copy tableau user files to desktop
     # Define the GitHub URL and the local file paths
     $SourceURL = "https://azlabstudentsstor.blob.core.windows.net/labartifacts/Tableau_Files.zip" 
