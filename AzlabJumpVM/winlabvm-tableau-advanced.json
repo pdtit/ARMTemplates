@@ -178,7 +178,7 @@
         }
       }
     ],
-    "publicIpAddressName": "[format('{0}-publicip-{1}', parameters('virtualMachineName'), uniqueString(parameters('virtualMachineName')))]",
+    "publicIpAddressName": "jumpvmip",
     "publicIpAddressType": "Dynamic",
     "publicIpAddressSku": "Basic",
     "diskConfigurationType": "NEW",
